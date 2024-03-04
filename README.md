@@ -1,2 +1,2 @@
 # Sankalp
-Capstone Project about Code snippet Manager
+Capstone Project about Code snippet Manager.
