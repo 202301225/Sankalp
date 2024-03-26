@@ -59,26 +59,46 @@ class CodeSnippetManager
         }
     }
 
-        void addSnippet(const string &name, const string &code, const vector<string> &tags)
-        {
-            snippets[name] = make_pair(code, tags);
-            saveSnippets();
-            cout << "Snippet '" << name << "' added successfully.\n";
-        }
+    void addSnippet(const string &name, const string &code, const vector<string> &tags)
+    {
+        snippets[name] = make_pair(code, tags);
+        saveSnippets();
+        cout << "Snippet '" << name << "' added successfully.\n";
+    }
 
-    void getSnippet(const string& name) {
+    void getSnippet(const string& name)
+    {
         auto it = snippets.find(name);
-        if (it != snippets.end()) {
+        if (it != snippets.end())
+        {
             cout << "Snippet '" << name << "':\n";
             cout << it->second.first << '\n'; // Output code snippet directly
             cout << "Tags: ";
-            for (const auto& tag : it->second.second) {
+            for (const auto& tag : it->second.second)
+            {
                 cout << tag << ' ';
             }
             cout << '\n';
         }
-        else {
+        else
+        {
             cout << "Snippet '" << name << "' not found.\n";
+        }
+    }
+
+    void listSnippets()
+    {
+        if (snippets.empty())
+        {
+            cout << "No snippets available.\n";
+        }
+        else
+        {
+            cout << "Available snippets:\n";
+            for (const auto &entry : snippets)
+            {
+                cout << "- " << entry.first << '\n';
+            }
         }
     }
 
