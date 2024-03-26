@@ -65,4 +65,21 @@ class CodeSnippetManager
             saveSnippets();
             cout << "Snippet '" << name << "' added successfully.\n";
         }
-}
+
+    void getSnippet(const string& name) {
+        auto it = snippets.find(name);
+        if (it != snippets.end()) {
+            cout << "Snippet '" << name << "':\n";
+            cout << it->second.first << '\n'; // Output code snippet directly
+            cout << "Tags: ";
+            for (const auto& tag : it->second.second) {
+                cout << tag << ' ';
+            }
+            cout << '\n';
+        }
+        else {
+            cout << "Snippet '" << name << "' not found.\n";
+        }
+    }
+
+};
