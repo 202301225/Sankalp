@@ -20,6 +20,7 @@ class CodeSnippetManager
         loadSnippets();
     }
 
+//This function to load snippet in the file
     void loadSnippets()
     {
         ifstream file(storage_file);
@@ -40,7 +41,7 @@ class CodeSnippetManager
             file.close();
         }
     }
-
+//this snippet to save snippet in the file
     void saveSnippets()
     {
         ofstream file(storage_file);
@@ -58,7 +59,7 @@ class CodeSnippetManager
             file.close();
         }
     }
-
+//this function is use to add snippet in the file
     void addSnippet(const string &name, const string &code, const vector<string> &tags)
     {
         snippets[name] = make_pair(code, tags);
@@ -66,6 +67,7 @@ class CodeSnippetManager
         cout << "Snippet '" << name << "' added successfully.\n";
     }
 
+//this function is use for get snippet from the file
     void getSnippet(const string& name)
     {
         auto it = snippets.find(name);
@@ -86,6 +88,7 @@ class CodeSnippetManager
         }
     }
 
+//this function is use for get list of snippets from file
     void listSnippets()
     {
         if (snippets.empty())
