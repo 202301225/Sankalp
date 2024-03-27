@@ -106,7 +106,7 @@ class CodeSnippetManager
     }
 
 //this function is use for get all tags which is saved in file
-void listTags()
+    void listTags()
     {
         unordered_set<string> tagSet;
         for (const auto &entry : snippets)
@@ -131,4 +131,29 @@ void listTags()
         }
     }
 
+//this function is use to search snippet name by tag 
+    void searchByTag(const string &tag)
+    {
+        vector<string> matchingSnippets;
+        for (const auto &entry : snippets)
+        {
+            if (find(entry.second.second.begin(), entry.second.second.end(), tag) != entry.second.second.end())
+            {
+                matchingSnippets.push_back(entry.first);
+            }
+        }
+
+        if (matchingSnippets.empty())
+        {
+            cout << "No snippets found with tag '" << tag << "'.\n";
+        }
+        else
+        {
+            cout << "Snippets with tag '" << tag << "':\n";
+            for (const auto &snippet : matchingSnippets)
+            {
+                cout << "- " << snippet << '\n';
+            }
+        }
+    }
 };
