@@ -105,4 +105,30 @@ class CodeSnippetManager
         }
     }
 
+//this function is use for get all tags which is saved in file
+void listTags()
+    {
+        unordered_set<string> tagSet;
+        for (const auto &entry : snippets)
+        {
+            for (const auto &tag : entry.second.second)
+            {
+                tagSet.insert(tag);
+            }
+        }
+
+        if (tagSet.empty())
+        {
+            cout << "No tags available.\n";
+        }
+        else
+        {
+            cout << "Available tags:\n";
+            for (const auto &tag : tagSet)
+            {
+                cout << "- " << tag << '\n';
+            }
+        }
+    }
+
 };
