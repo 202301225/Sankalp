@@ -156,4 +156,19 @@ class CodeSnippetManager
             }
         }
     }
+//this function is use for edit snippet which you already stored
+    void editSnippet(const string &name, const string &newCode, const vector<string> &newTags)
+    {
+        auto it = snippets.find(name);
+        if (it != snippets.end())
+        {
+            snippets[name] = make_pair(newCode, newTags);
+            saveSnippets();
+            cout << "Snippet '" << name << "' edited successfully.\n";
+        }
+        else
+        {
+            cout << "Snippet '" << name << "' not found.\n";
+        }
+    }
 };
