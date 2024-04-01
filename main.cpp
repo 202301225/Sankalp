@@ -172,3 +172,127 @@ class CodeSnippetManager
         }
     }
 };
+
+
+int main()
+{
+    CodeSnippetManager snippetManager;
+
+    while (true)
+    {
+        cout << "\nCode Snippet Manager Menu:\n";
+        cout << "1. Add Snippet\n";
+        cout << "2. Get Snippet\n";
+        cout << "3. List Snippets\n";
+        cout << "4. List Tags\n";
+        cout << "5. Search by Tag\n";
+        cout << "6. Edit Snippet\n";
+        cout << "7. Remove Snippet\n";
+        cout << "8. Exit\n";
+
+        int choice;
+        cout << "Enter your choice (1-8): ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+        {
+            string name, codeLine, code;
+            vector<string> tags;
+
+            cout << "Enter snippet name: ";
+            cin.ignore(); // Ignore newline character left in the input buffer
+            getline(cin, name);
+
+            cout << "Enter code snippet (press Enter on an empty line to finish):\n";
+
+            // Read multiple lines of code until an empty line is entered
+            while (getline(cin, codeLine) && !codeLine.empty())
+            {
+                code += codeLine + '\n';
+            }
+
+            cout << "Enter tags (space-separated): ";
+            string tagInput;
+            getline(cin, tagInput);
+            istringstream iss(tagInput);
+            string tag;
+            while (iss >> tag)
+            {
+                tags.push_back(tag);
+            }
+
+            // Add the snippet
+            snippetManager.addSnippet(name, code, tags);
+            break;
+        }
+        case 2:
+        {
+            string name;
+            cout << "Enter snippet name: ";
+            cin >> name;
+            snippetManager.getSnippet(name);
+            break;
+        }
+        case 3:
+            snippetManager.listSnippets();
+            break;
+        case 4:
+            snippetManager.listTags();
+            break;
+        case 5:
+        {
+            string tag;
+            cout << "Enter tag to search: ";
+            cin >> tag;
+            snippetManager.searchByTag(tag);
+            break;
+        }
+        case 6:
+        {
+            string name, newCode;
+            vector<string> newTags;
+
+            cout << "Enter snippet name to edit: ";
+            cin >> name;
+
+            cout << "Enter new code snippet (press Enter on an empty line to finish):\n";
+            cin.ignore(); // Clear newline from the buffer
+            string codeLine;
+            while (getline(cin, codeLine) && !codeLine.empty())
+            {
+                newCode += codeLine + '\n';
+            }
+
+            cout << "Enter new tags (space-separated): ";
+            string tagInput;
+            getline(cin, tagInput);
+            istringstream iss(tagInput);
+            string tag;
+            while (iss >> tag)
+            {
+                newTags.push_back(tag);
+            }
+
+            snippetManager.editSnippet(name, newCode, newTags);
+            break;
+        }
+        case 7:
+        {
+            string name;
+            cout << "Enter snippet name to remove: ";
+            cin >> name;
+            snippetManager.removeSnippet(name);
+            break;
+        }
+        case 8:
+            cout << "Exiting Code Snippet Manager. Goodbye!\n";
+            return 0;
+        default:
+            cout << "Invalid choice. Please enter a number between 1 and 8.\n";
+        }
+    }
+
+    return 0;
+}
