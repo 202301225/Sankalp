@@ -172,6 +172,7 @@ class CodeSnippetManager
         }
     }
 };
+
 int main()
 {
     CodeSnippetManager snippetManager;
@@ -181,14 +182,14 @@ int main()
         cout<<"\n--------------------------------";
         cout << "\nCode Snippet Manager Menu:"<<endl;
         cout<<"--------------------------------"<<endl;
-        cout << "Enter 1 ->Add Snippet"<<endl;
-        cout << "Enter 2 ->Get Snippet"<<endl;
-        cout << "Enter 3 ->List Snippets"<<endl;
-        cout << "Enter 4 ->List Tags"<<endl;
-        cout << "Enter 5 ->Search by Tag"<<endl;
-        cout << "Enter 6 ->Edit Snippet"<<endl;
-        cout << "Enter 7 ->Remove Snippet"<<endl;
-        cout << "Enter 8 ->Exit"<<endl;
+        cout << "Enter 1 for Add Snippet"<<endl;
+        cout << "Enter 2 for Get Snippet"<<endl;
+        cout << "Enter 3 for List Snippets"<<endl;
+        cout << "Enter 4 for List Tags"<<endl;
+        cout << "Enter 5 for Search by Tag"<<endl;
+        cout << "Enter 6 for Edit Snippet"<<endl;
+        cout << "Enter 7 for Remove Snippet"<<endl;
+        cout << "Enter 8 for Exit"<<endl;
         cout<<"--------------------------------"<<endl;
         int choice;
         cout << "\nEnter your choice (1-8): ";
@@ -196,38 +197,43 @@ int main()
 
         switch (choice)
         {
-        case 1:
-        {
-            string SnippetName, CodeOfSnippet, codeOfSnippet;
-            vector<string> tagForSnippet;
+case 1:
+{
+    string SnippetName, CodeOfSnippet, codeOfSnippet;
+    vector<string> tagForSnippet;
 
-            cout << "Enter snippet Name: ";
-            cin.ignore(); // Ignore newline character left in the input buffer
-            getline(cin, SnippetName);
+    cout << "Enter snippet Name: ";
+    cin.ignore(); // Ignore newline character left in the input buffer
+    getline(cin, SnippetName);
 
-            cout << "Enter code snippet (press Enter on an empty line to finish your Snippet Code):"<<endl;
+    cout << "Enter code snippet (## to finish your Snippet Code):" << endl;
 
-            // Read multiple lines of code until an empty line is entered
-            while (getline(cin, CodeOfSnippet) && !CodeOfSnippet.empty())
-            {
-                codeOfSnippet += CodeOfSnippet + '\n';
-            }
-
-            cout << "Enter tags (space-separated) for Your Snippet: ";
-            string str;
-            getline(cin, str);
-            istringstream iss(str);
-            string tag;
-            while (iss >> tag)
-            {
-                tagForSnippet.push_back(tag);
-            }
-
-            // Add the snippet
-            snippetManager.addSnippet(SnippetName, codeOfSnippet, tagForSnippet);
-            cout << "\n*------------------------------------------------------------*"<<endl;
+    // Read multiple lines of code until '#' symbol is entered twice
+    while (true)
+    {
+        string line;
+        getline(cin, line);
+        if (line == "##") // Check if '#' symbol has been entered twice
             break;
-        }
+        codeOfSnippet += line + '\n';
+    }
+
+    cout << "Enter tags (space-separated) for Your Snippet: ";
+    string str;
+    getline(cin, str);
+    istringstream iss(str);
+    string tag;
+    while (iss >> tag)
+    {
+        tagForSnippet.push_back(tag);
+    }
+
+    // Add the snippet
+    snippetManager.addSnippet(SnippetName, codeOfSnippet, tagForSnippet);
+    cout << "\n*------------------------------------------------------------*" << endl;
+    break;
+}
+
         case 2:
         {
             string name;
