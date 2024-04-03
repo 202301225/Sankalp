@@ -173,6 +173,7 @@ class CodeSnippetManager
     }
 };
 
+
 int main()
 {
     CodeSnippetManager snippetManager;
