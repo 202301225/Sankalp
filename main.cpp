@@ -173,21 +173,6 @@ class CodeSnippetManager
         }
     }
 
-      void removeSnippet(string &Snippet_name)
-        {
-            auto it = snippets.find(Snippet_name);
-            if (it != snippets.end())
-            {
-                snippets.erase(it);
-                saveSnippets();
-                cout << "Snippet '" << Snippet_name << "' removed successfully"<<endl;
-            }
-            else
-            {
-                cout << "For Removing Snippet '" << Snippet_name << "' not found"<<endl;
-            }
-        }
-
 };
 
 
