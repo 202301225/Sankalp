@@ -96,11 +96,12 @@ class CodeSnippetManager
             cout << "No snippets available.\n";
         }
         else
-        {
+        {   
+            int count = 0;
             cout << "Available snippets:\n";
             for (const auto &entry : snippets)
             {
-                cout << "- " << entry.first << '\n';
+                cout << ++count<<"->" << entry.first << '\n';
             }
         }
     }
@@ -171,6 +172,22 @@ class CodeSnippetManager
             cout << "Snippet '" << name << "' not found.\n";
         }
     }
+
+      void removeSnippet(string &Snippet_name)
+        {
+            auto it = snippets.find(Snippet_name);
+            if (it != snippets.end())
+            {
+                snippets.erase(it);
+                saveSnippets();
+                cout << "Snippet '" << Snippet_name << "' removed successfully"<<endl;
+            }
+            else
+            {
+                cout << "For Removing Snippet '" << Snippet_name << "' not found"<<endl;
+            }
+        }
+
 };
 
 
