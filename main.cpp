@@ -1,10 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <vector>
-#include <sstream>
-#include <unordered_set>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -15,15 +9,15 @@ class CodeSnippetManager
     string storage_file;
 
     public:
-    CodeSnippetManager(const string &file = "snippets.txt") : storage_file(file)
+    CodeSnippetManager(const string &file = "snippets.txt") : storage_file(file)//constructor of a class CodeSnippetManager
     {
         loadSnippets();
     }
 
-//This function to load snippet in the file
+    //This function to load snippet in the file
     void loadSnippets()
     {
-        ifstream file(storage_file);
+        ifstream file(storage_file);//open file in the read mode
         if (file.is_open())
         {
             string name, code, tags;
@@ -41,7 +35,7 @@ class CodeSnippetManager
             file.close();
         }
     }
-//this snippet to save snippet in the file
+  //this snippet to save snippet in the file
     void saveSnippets()
     {
         ofstream file(storage_file);
@@ -59,7 +53,8 @@ class CodeSnippetManager
             file.close();
         }
     }
-//this function is use to add snippet in the file
+
+    //this function is use to add snippet in the file
     void addSnippet(const string &name, const string &code, const vector<string> &tags)
     {
         snippets[name] = make_pair(code, tags);
@@ -67,7 +62,7 @@ class CodeSnippetManager
         cout << "Snippet '" << name << "' added successfully.\n";
     }
 
-//this function is use for get snippet from the file
+  //this function is use for get snippet from the file
     void getSnippet(const string& name)
     {
         auto it = snippets.find(name);
@@ -88,7 +83,7 @@ class CodeSnippetManager
         }
     }
 
-//this function is use for get list of snippets from file
+    //this function is use for get list of snippets from file
     void listSnippets()
     {
         if (snippets.empty())
@@ -132,7 +127,7 @@ class CodeSnippetManager
         }
     }
 
-//this function is use to search snippet name by tag 
+   //this function is use to search snippet name by tag 
     void searchByTag(const string &tag)
     {
         vector<string> matchingSnippets;
@@ -157,7 +152,7 @@ class CodeSnippetManager
             }
         }
     }
-//this function is use for edit snippet which you already stored
+    //this function is use for edit snippet which you already stored
     void editSnippet(const string &name, const string &newCode, const vector<string> &newTags)
     {
         auto it = snippets.find(name);
@@ -169,7 +164,7 @@ class CodeSnippetManager
         }
         else
         {
-            cout << "Snippet '" << name << "' not found.\n";
+            cout << "Snippet '" << name << "' not found"<<endl;
         }
     }
 
