@@ -123,4 +123,80 @@ public:
         }
     }
 
+void listTags()
+    {
+
+        int count = 1;
+
+        cout << endl
+             << MAGENTA << "Available snippets TAGs are:" << RESET << endl;
+
+        for (auto it = snippets.begin(); it != snippets.end(); ++it)
+        {
+
+            cout << BOLD_YELLOW << count << RESET << "-> " << BOLD_CYAN << it->second.second << RESET << endl;
+
+            count++;
+        }
+    }
+
+    void searchByTag(const string &tag)
+    {
+
+        vector<string> MatchSnippet;
+
+        for (auto it = snippets.begin(); it != snippets.end(); ++it)
+
+        {
+
+            if (it->second.second.find(tag) != string::npos)
+            {
+
+                MatchSnippet.push_back(it->first);
+            }
+        }
+
+        if (MatchSnippet.empty())
+        {
+
+            cout << endl
+                 << BOLD_RED << "No snippets found with tag '" << RESET << BOLD_BLUE << tag << RESET << "'" << endl;
+        }
+        else
+        {
+
+            cout << endl
+                 << "Snippets with tag '" << BOLD_BLUE << tag << RESET << "':" << endl;
+
+            for (auto snippetIt = MatchSnippet.begin(); snippetIt != MatchSnippet.end(); ++snippetIt)
+            {
+
+                cout << "- " << BOLD_BLUE << *snippetIt << RESET << endl;
+            }
+        }
+    }
+
+    void removeSnippet(string &Snippet_name)
+
+    {
+
+        auto it = snippets.find(Snippet_name);
+
+        if (it != snippets.end())
+        {
+
+            snippets.erase(it);
+
+            saveSnippets();
+
+            cout << endl << "Snippet '" << BOLD_BLUE << Snippet_name << RESET << "'" << BOLD_GREEN << " removed successfully" << RESET << endl;
+        }
+        else
+        {
+            cout << endl << "For Removing Snippet '" << BOLD_BLUE << Snippet_name << RESET << "'" << BOLD_RED << " not found" << RESET << endl;
+        }
+    }
+
+ 
+  
 };
