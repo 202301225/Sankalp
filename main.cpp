@@ -1,7 +1,7 @@
 
 
 #include <bits/stdc++.h>
-#include "class_snippet_manager.cpp"
+#include "Class_snippet_Manager.cpp"
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
