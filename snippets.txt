@@ -907,3 +907,2168 @@ int countOccurrences(const string& str, char target, int index = 0) {
 **** TAGS ****
 
 Count_OccuranceOfCharacter
+**** SNIPPET ****
+isOrthogonalMatrix
+// Function to check if a 2D array is an orthogonal matrix
+bool isOrthogonalMatrix(int arr[][3], int rows, int cols) {
+    if (rows != cols) return false;
+    
+    int product[3][3] = {};
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < rows; ++j) {
+            for (int k = 0; k < cols; ++k) {
+                product[i][j] += arr[i][k] * arr[j][k];
+            }
+        }
+    }
+    return isIdentityMatrix(product, rows, cols);
+}
+
+**** TAGS ****
+
+isOrthogonalMatrix 
+**** SNIPPET ****
+cumulativeColumnSum
+// Function to calculate the column-wise cumulative sum of a 2D array
+void cumulativeColumnSum(int arr[][3], int rows, int cols) {
+    for (int j = 0; j < cols; ++j) {
+        int sum = 0;
+        for (int i = 0; i < rows; ++i) {
+            sum += arr[i][j];
+            arr[i][j] = sum;
+        }
+    }
+}
+
+**** TAGS ****
+
+cumulativeColumnSum 
+**** SNIPPET ****
+isBandMatrix
+// Function to check if a 2D array is a banded matrix (non-zero elements lie on a diagonal and adjacent diagonals)
+bool isBandedMatrix(int arr[][3], int rows, int cols) {
+    int upperLimit = min(rows, cols) - 1;
+    int lowerLimit = -upperLimit;
+    
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (abs(i - j) > upperLimit || abs(i - j) < lowerLimit) {
+                if (arr[i][j] != 0) return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isBandMatrix 
+**** SNIPPET ****
+sumOfSecondaryDiagonal
+// Function to compute the sum of the secondary diagonal of a square matrix
+int sumOfSecondaryDiagonal(int arr[][3], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i][size - 1 - i];
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+sumOfSecondaryDiagonal 
+**** SNIPPET ****
+isConstantMatrix
+// Function to check if a 2D array is a constant matrix (all elements are equal)
+bool isConstantMatrix(int arr[][3], int rows, int cols) {
+    int constant = arr[0][0];
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (arr[i][j] != constant) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isConstantMatrix 
+**** SNIPPET ****
+averageOfElements_2D_Matrix
+// Function to find the average of all elements in a 2D array
+double averageOfElements(int arr[][3], int rows, int cols) {
+    int sum = 0;
+    int count = rows * cols;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            sum += arr[i][j];
+        }
+    }
+    return static_cast<double>(sum) / count;
+}
+
+**** TAGS ****
+
+averageOfElements_2D_Array 
+**** SNIPPET ****
+isLowerTriangular
+// Function to check if a 2D array is lower triangular
+bool isLowerTriangular(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = i + 1; j < cols; ++j) {
+            if (arr[i][j] != 0) return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isLowerTriangular 
+**** SNIPPET ****
+isPascalsTriangle
+// Function to check if a 2D array is a Pascal's triangle
+bool isPascalsTriangle(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        if (arr[i][0] != 1 || arr[i][i] != 1) {
+            return false;
+        }
+        for (int j = 1; j < i; ++j) {
+            if (arr[i][j] != arr[i - 1][j - 1] + arr[i - 1][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isPascalsTriangle 
+**** SNIPPET ****
+isIdentityMatrix
+// Function to check if a 2D array is identity matrix
+bool isIdentityMatrix(int arr[][3], int rows, int cols) {
+    if (!isSquareMatrix(arr, rows, cols)) return false;
+    
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if ((i == j && arr[i][j] != 1) || (i != j && arr[i][j] != 0)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isIdentityMatrix 
+**** SNIPPET ****
+isSparse_Matrix
+// Function to check if a 2D array is sparse (contains more zeros than non-zeros)
+bool isSparse(int arr[][3], int rows, int cols) {
+    int countZeros = 0;
+    int countNonZeros = 0;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (arr[i][j] == 0) {
+                countZeros++;
+            } else {
+                countNonZeros++;
+            }
+        }
+    }
+    return countZeros > countNonZeros;
+}
+
+**** TAGS ****
+
+isSparse_Matrix 
+**** SNIPPET ****
+rotate90Clockwise_2D_Array
+// Function to rotate a square 2D array 90 degrees clockwise
+void rotate90Clockwise(int arr[][3], int n) {
+    // Transpose the array
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            swap(arr[i][j], arr[j][i]);
+        }
+    }
+    // Reverse each row
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n / 2; ++j) {
+            swap(arr[i][j], arr[i][n - 1 - j]);
+        }
+    }
+}
+
+**** TAGS ****
+
+rotate90Clockwise_2D_Array 
+**** SNIPPET ****
+sumOfColumns_2D_Array
+// Function to find the sum of elements in each column of a 2D array
+void sumOfColumns(int arr[][3], int rows, int cols) {
+    for (int j = 0; j < cols; ++j) {
+        int sum = 0;
+        for (int i = 0; i < rows; ++i) {
+            sum += arr[i][j];
+        }
+        cout << "Sum of elements in column " << j << ": " << sum << endl;
+    }
+}
+
+**** TAGS ****
+
+sumOfColumns_2D_Array 
+**** SNIPPET ****
+int countOccurrencesInArray(const vector<int>& vec, int value) {
+    int count = 0;
+    for (int num : vec) {
+        if (num == value) {
+            count++;
+        }
+    }
+    return count;
+}
+
+**** TAGS ****
+
+countOccurrencesInArray 
+**** SNIPPET ****
+reverse_DoublyList
+void reverseList(Node* &head,Node* &tail){
+    Node* currPtr = head;
+    while(currPtr){
+        Node* nextPtr = currPtr->next;
+        currPtr->next = currPtr->prev;
+        currPtr->prev = nextPtr;
+        currPtr = nextPtr;
+    }
+    //swap head and tail
+     Node* newHead = tail;
+    tail = head;
+    head = newHead;
+   return;
+}
+
+**** TAGS ****
+
+tag_reverse_DoublyList 
+**** SNIPPET ****
+bubble_sort
+void bubblesort(int *arr,int n){
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<i;j++){
+
+            if(arr[i]<arr[j])
+            {
+               int swap = arr[i];
+               arr[i] = arr[j];
+               arr[j] = swap;
+
+            }
+        }
+    }
+}
+
+**** TAGS ****
+
+bubble_sort 
+**** SNIPPET ****
+removeNodeFromLast_Singly
+void deleteFromK(Node* &head,int k){
+  Node* ptr1 = head;
+  Node* ptr2 = head;
+  int count = k;
+  while(count--) ptr2 = ptr2->next;
+  if(ptr2==NULL){//k is equal to length of linked list 
+      //we have to delete head node
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+    return;
+  }
+}
+
+
+**** TAGS ****
+
+tag_removeNodeLast_K_Singly 
+**** SNIPPET ****
+countOccurrences_2D_Array
+// Function to count occurrences of a given element in a 2D array
+int countOccurrences(int arr[][3], int rows, int cols, int element) {
+    int count = 0;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (arr[i][j] == element) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+**** TAGS ****
+
+countOccurences_2DArray 
+**** SNIPPET ****
+pascal_Triangle
+vector<vector<int>> generatePascalTriangle(int numRows) {
+    vector<vector<int>> triangle(numRows);
+
+    for (int i = 0; i < numRows; ++i) {
+        triangle[i].resize(i + 1);
+        triangle[i][0] = triangle[i][i] = 1; // First and last element of each row is 1
+
+        for (int j = 1; j < i; ++j) {
+            triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j]; // Sum of two elements above
+        }
+    }
+
+    return triangle;
+}
+
+void printPascalTriangle(const vector<vector<int>>& triangle) {
+    int numRows = triangle.size();
+    for (int i = 0; i < numRows; ++i) {
+        for (int j = 0; j <= i; ++j) {
+            cout << triangle[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+**** TAGS ****
+
+pascalTriangle 
+**** SNIPPET ****
+binarySearch
+int binarySearch(vector<int>&input,int target){
+  
+   int lo = 0;//starting point of the search space
+   int hi = input.size();//ending point of the search spacce
+
+    while(lo<= hi)
+    {
+      //calculate mid point of the search space
+      int mid = (lo+hi)/2;
+
+        if(input[mid] == target)  return mid;
+        else if(input[mid] < target)  lo = mid+1;
+        else hi = mid-1;
+     }
+
+   return -1;
+}
+
+**** TAGS ****
+
+tag_BinarySearch 
+**** SNIPPET ****
+printArray
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+**** TAGS ****
+
+printArray 
+**** SNIPPET ****
+findIndexArray
+// Function to find the index of the first occurrence of a value in an array
+int findIndexInArray(int arr[], int size, int value) {
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == value) {
+            return i;
+        }
+    }
+    return -1; // Value not found
+}
+
+**** TAGS ****
+
+findIndexInArray 
+**** SNIPPET ****
+sumBelowMainDiagonal_Array
+// Function to find the sum of elements below the main diagonal in a 2D array
+int sumBelowMainDiagonal(int arr[][3], int rows, int cols) {
+    int sum = 0;
+    for (int i = 1; i < rows; ++i) {
+        for (int j = 0; j < i; ++j) {
+            sum += arr[i][j];
+        }
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+sumBelowMainDiagonal 
+**** SNIPPET ****
+deletePos_DoublyList
+void deletePos(Node* &head,int pos){
+    //assume pos is less than or equal to length of list
+    if(head == NULL) return;
+    Node* temp = head;
+    int count = 1;
+    while(count<pos){
+        temp = temp->next;
+        count++;
+    }
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    free(temp);
+    return;
+}
+
+**** TAGS ****
+
+tag_deletePos_DoublyList 
+**** SNIPPET ****
+deleteAtPos_CircularList
+void deletePos(Node* &head,int pos){
+    if(pos==0){
+        deleteHead(head);
+        return;
+    }
+    int curr_pos=0;
+    Node* prev = head;
+    while(curr_pos != pos-1){
+        prev = prev->next;
+        curr_pos++;
+    }
+    //prev is pointing to the Node at pos-1
+    Node* temp = prev->next;//Node to be deleted
+    prev->next = prev->next->next;
+    free(temp); 
+}
+
+**** TAGS ****
+
+tag_deleteAtPos_CircularList 
+**** SNIPPET ****
+deleteAtBeginning_CircularList
+   void deleteStart(Node* &head){
+    if(head==NULL)
+    { 
+        return;
+    }
+    Node* temp = head;
+    Node* tail = head;
+    while(tail->next!=head){
+        tail = tail->next;
+    }
+    head = head->next;
+    tail->next = head;
+    free(temp);
+}
+
+**** TAGS ****
+
+tag_insertBeginning_CircularList 
+**** SNIPPET ****
+linearSearch
+bool linearSearch(int arr[],int n,int target){
+ for(int i=0;i<n;i++){
+   if(arr[i] == target){
+       return true;
+}
+}
+  return false;
+}
+
+**** TAGS ****
+
+LinearSearch 
+**** SNIPPET ****
+determinant2x2
+// Function to compute the determinant of a 2x2 matrix
+int determinant2x2(int arr[2][2]) {
+    return arr[0][0] * arr[1][1] - arr[0][1] * arr[1][0];
+}
+
+**** TAGS ****
+
+determinant2x2 
+**** SNIPPET ****
+isIsomorphic_String
+bool isIsomorphic(string s1,string s2){
+       vector<int> v1(128,-1);
+       vector<int> v2(128,-1);
+       //if strings not match
+       if(s1.length()!= s2.length())  return false;
+       for(int i=0;i<s1.length();i++){
+            //checking if value of character at index i match in both vector
+            if(v1[s1[i]]!= v2[s2[i]])  return false;
+            v1[s1[i]] = v2[s2[i]] = i;//storing starting position in vectors for characters at index i
+       }
+       return true;
+}
+
+**** TAGS ****
+
+tag_isomorphic_string 
+**** SNIPPET ****
+quick_sort
+int partition(int arr[],int first,int last)
+{
+
+    int pivot = arr[last];
+
+    int i = first - 1;//for insrting element which less than pivot element
+
+    int j = first;//for finding element less than pivot element
+
+    for(;j<last;j++)
+    {
+        if(arr[j]<pivot)
+        {
+            i++;
+            swap(arr[i],arr[j]);
+
+        }
+    }
+
+    //now i is pointing to the last element less than last
+    //correct position for the pivot element is i+1
+
+     swap(arr[i+1],arr[last]);
+
+      return i+1;
+}
+
+void quickSort(int arr[],int first ,int last)
+{
+    //base case
+    if(first>=last) return;
+
+    int pi = partition(arr,first,last);
+    quickSort(arr,first,pi-1);
+    quickSort(arr,pi+1,last);
+}
+
+**** TAGS ****
+
+quick_sort 
+**** SNIPPET ****
+print_CircularList
+ void display(Node* head){
+    Node* temp = head;
+    cout<<"Circular Linked-List: ";
+    do
+    {
+        cout<<temp->val<<"->";
+         temp = temp->next;
+    } while (temp!=head);
+    cout<<endl;
+}
+
+**** TAGS ****
+
+tag_print_CircularList 
+**** SNIPPET ****
+insertEnd_Circular_List
+    void insertEnd(int value){
+        Node* new_node = new Node(value);
+        if(head==NULL){
+            head = new_node;
+            new_node->next = head;
+            return;
+        }
+        Node* tail = head;
+        while(tail->next!=head){
+            tail = tail->next;
+        }
+        //now tail is pointing to the last node
+        tail->next  = new_node;
+        new_node->next = head;
+}
+
+**** TAGS ****
+
+tag_insertEnd_CircularList 
+**** SNIPPET ****
+deleteNeighbour_Node_DoublyList
+void deleteNeighour(Node* &head,Node* &tail){
+  Node* currNode = tail->prev;//second last
+  while(currNode!=head){
+    Node* prevNode = currNode->prev;
+    Node* nextNode = currNode->next;
+    if(prevNode->val!=nextNode->val){
+        // i need to delete currNode
+        prevNode->next = nextNode;
+        nextNode->prev = prevNode;
+        free(currNode);
+    }
+    currNode = prevNode;
+  }
+return;
+}
+
+**** TAGS ****
+
+tag_deleteneighbour_Node_DoublyList 
+**** SNIPPET ****
+isArrayEmpty
+// Function to check if a vector is empty
+bool isVectorEmpty(const vector<int>& vec) {
+    return vec.empty();
+}
+
+**** TAGS ****
+
+isArrayEmpty 
+**** SNIPPET ****
+isArrayPalindrome
+// Function to check if a vector is palindrome
+bool isVectorPalindrome(const vector<int>& vec) {
+    vector<int> reversedVec = vec;
+    reverse(reversedVec.begin(), reversedVec.end());
+    return vec == reversedVec;
+}
+
+**** TAGS ****
+
+IsArrayPalindrome 
+**** SNIPPET ****
+removeOccurrencesFromArray
+// Function to remove all occurrences of a value from an array
+int removeOccurrencesFromArray(int arr[], int& size, int value) {
+    int count = 0;
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == value) {
+            count++;
+        } else {
+            arr[i - count] = arr[i];
+        }
+    }
+    size -= count;
+    return count;
+}
+
+**** TAGS ****
+
+removeOccuranceFromArray 
+**** SNIPPET ****
+cumulativeRowSum
+// Function to calculate the row-wise cumulative sum of a 2D array
+void cumulativeRowSum(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        int sum = 0;
+        for (int j = 0; j < cols; ++j) {
+            sum += arr[i][j];
+            arr[i][j] = sum;
+        }
+    }
+}
+
+**** TAGS ****
+
+cumulativeRowSum 
+**** SNIPPET ****
+sumOfRows_2DArray
+// Function to find the sum of elements in each row of a 2D array
+void sumOfRows(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        int sum = 0;
+        for (int j = 0; j < cols; ++j) {
+            sum += arr[i][j];
+        }
+        cout << "Sum of elements in row " << i << ": " << sum << endl;
+    }
+}
+
+**** TAGS ****
+
+sumOfRows_2D_Array 
+**** SNIPPET ****
+inseration_sort
+void insertionSort(vector<int> &v)
+{
+    int n = v.size();
+
+    for(int i=1;i<n;i++)
+    {
+        int current = v[i];
+
+        int j = i-1;
+
+        while(j>= 0 && v[j]>current)
+        {
+            v[j+1] = v[j];
+            j--;
+        }
+        v[j+1] = current;
+    }
+
+    return;
+
+}
+
+**** TAGS ****
+
+inseration_sort 
+**** SNIPPET ****
+findMaxIn2DArray
+// Function to find the maximum element in a 2D array
+int findMaxIn2DArray(int arr[][3], int rows, int cols) {
+    int max = arr[0][0];
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (arr[i][j] > max) {
+                max = arr[i][j];
+            }
+        }
+    }
+    return max;
+}
+
+**** TAGS ****
+
+findMaxIn2DArray 
+**** SNIPPET ****
+isDiagonal2DArray
+// Function to check if a 2D array is diagonal
+bool isDiagonal2DArray(int arr[][3], int rows, int cols) {
+    if (rows != cols) return false;
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (i != j && arr[i][j] != 0) return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isDiagonal2DArray 
+**** SNIPPET ****
+sort_String
+string countSort(string str){
+   vector<int> freq(26,0);
+   for(int i=0;i<str.length();i++){  
+        int index = str[i] - 'a';
+        freq[index]++;
+   }
+ int j=0;
+ for(int i=0;i<26;i++)
+ {
+    while(freq[i]--){
+        str[j] = i+'a';
+        j++;
+    }
+ }
+return str;
+}
+
+**** TAGS ****
+
+tag_Sort_String 
+**** SNIPPET ****
+sortArrayIn_Assending
+// Function to sort elements of a vector in ascending order
+void sortVectorAscending(vector<int> &vec) {
+    sort(vec.begin(), vec.end());
+}
+
+**** TAGS ****
+
+sortArrayAscending 
+**** SNIPPET ****
+deleteAtPos
+void deletePos(Node* &head,int pos){
+    if(pos==0){
+        deleteHead(head);
+        return;
+    }
+    int curr_pos=0;
+    Node* prev = head;
+    while(curr_pos != pos-1){
+        prev = prev->next;
+        curr_pos++;
+    }
+    //prev is pointing to the Node at pos-1
+    Node* temp = prev->next;//Node to be deleted
+    prev->next = prev->next->next;
+    free(temp); 
+}
+
+**** TAGS ****
+
+deleteAtPos_Singly 
+**** SNIPPET ****
+Reverse_Singly
+Node* reverseList(Node* head) {
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next = nullptr;
+    while (current) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}
+
+**** TAGS ****
+
+tag_Reverse_Singly 
+**** SNIPPET ****
+bucket_sort
+void bucketSort(vector<float> &v,int n)
+{
+    //step-1 
+    vector<vector<float>> bucket(n,vector<float>());
+
+    //step-2 inserting element in the bucket
+    for(int i=0;i<n;i++)
+    {
+        int index = v[i]*n;
+        bucket[index].push_back(v[i]);
+    }
+   
+    //step - 3:sorting individual element
+
+     for(int i=0;i<n;i++){
+        if(!bucket[i].empty())
+        {
+            sort(bucket[i].begin(),bucket[i].end());
+        }
+
+     }
+     //step 4:combining element from the bucket
+      int k=0;
+      for(int i=0;i<n;i++)
+      {
+        for(int j=0;j<bucket[i].size();j++)
+        {
+            v[k++] = bucket[i][j];
+            
+        }
+    }
+}
+
+**** TAGS ****
+
+bucket_sort 
+**** SNIPPET ****
+update_Pos_Singly
+void update_Pos(Node* &head,int k,int val){
+    Node* temp = head;
+    int curr_pos=0;
+    while(curr_pos!=k){
+        temp=temp->next;
+        curr_pos++;
+    }
+    //temp will pointing to the kth pos
+    temp->val = val;
+}
+
+**** TAGS ****
+
+tag_update_pos_Singly 
+**** SNIPPET ****
+findMax
+int findMax(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+**** TAGS ****
+
+findMax 
+**** SNIPPET ****
+count_sort
+void countSort(vector<int>& arr) {
+    int maxElement = max(arr.begin(), arr.end());
+    int minElement = min(arr.begin(), arr.end());
+    int range = maxElement - minElement + 1;
+
+    vector<int> count(range), output(arr.size());
+    for (int i = 0; i < arr.size(); ++i)
+        ++count[arr[i] - minElement];
+
+    for (int i = 1; i < count.size(); ++i)
+        count[i] += count[i - 1];
+
+    for (int i = arr.size() - 1; i >= 0; --i) {
+        output[count[arr[i] - minElement] - 1] = arr[i];
+        --count[arr[i] - minElement];
+    }
+
+    for (int i = 0; i < arr.size(); ++i)
+        arr[i] = output[i];
+}
+
+**** TAGS ****
+
+countSort 
+**** SNIPPET ****
+findMaxArray
+// Function to find the maximum element in a vector
+int findMaxInVector(const vector<int>& vec) {
+    if (vec.empty()) {
+        return -1; // Return a sentinel value indicating no maximum found
+    }
+    int max = vec[0];
+    for (int i = 1; i < vec.size(); ++i) {
+        if (vec[i] > max) {
+            max = vec[i];
+        }
+    }
+    return max;
+}
+
+**** TAGS ****
+
+findMaxArray 
+**** SNIPPET ****
+checkArraySort_Desending
+// Function to check if a vector is sorted in descending order
+bool isVectorSortedDescending(const vector<int>& vec) {
+    for (size_t i = 1; i < vec.size(); ++i) {
+        if (vec[i] > vec[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+checkArraySort_Desending 
+**** SNIPPET ****
+insertStart_Doubly_List
+void insertPos(Node* &head,int value,int pos){
+    //assuming pos is less or equal to length
+    Node* temp = head;
+    int count = 1;
+    while(count<(pos-1)){
+        temp = temp->next;
+        count++;
+    }
+    //now temp is pointing to the pos-1 node
+    Node* new_node = new Node(value);
+    new_node->next = temp->next;
+    temp->next = new_node;
+    new_node->prev = temp;
+    new_node->prev->next = new_node;
+    return;
+}
+
+**** TAGS ****
+
+tag_insertStart_DoublyList 
+**** SNIPPET ****
+appendToarray
+// Function to append a value to a vector
+void appendToVector(vector<int> &vec, int value) {
+    vec.push_back(value);
+}
+
+**** TAGS ****
+
+appendToVector 
+**** SNIPPET ****
+isScalarMatrix
+// Function to check if a 2D array is a scalar matrix (diagonal elements are equal, off-diagonal elements are zero)
+bool isScalarMatrix(int arr[][3], int rows, int cols) {
+    if (!isSquareMatrix(arr, rows, cols)) return false;
+    
+    int diagonalElement = arr[0][0];
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if ((i != j && arr[i][j] != 0) || (i == j && arr[i][j] != diagonalElement)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isScalarMatrix 
+**** SNIPPET ****
+reverseArray
+void reverseArray(int arr[], int size) {
+    for (int i = 0; i < size / 2; ++i) {
+        swap(arr[i], arr[size - i - 1]);
+    }
+}
+
+**** TAGS ****
+
+reverseArray 
+**** SNIPPET ****
+two_List_EqualOrNot_Singly
+bool checkLL(Node* head1,Node* head2){
+    Node* ptr1 = head1;
+    Node* ptr2 = head2; 
+    while(ptr1!=NULL && ptr2!= NULL){
+       if(ptr1->val!=ptr2->val) {
+        return false;
+       }
+       ptr1 = ptr1->next;
+       ptr2 = ptr2->next;
+    }
+     //in this case either ptr1 null or ptr2 null or both are null
+     return (ptr1==NULL && ptr2==NULL);
+}
+
+**** TAGS ****
+
+tag_Check_List_EqualOrNot_Singly 
+**** SNIPPET ****
+insertAtBegin
+void insertAtBeginning(Node* &head,int value){
+   Node* newNode = new Node(value);
+   if(head == NULL){
+     head = newNode;
+     return;
+    }
+    newNode->next = head;
+    head = newNode;
+}
+
+**** TAGS ****
+
+TagInsertBegin 
+**** SNIPPET ****
+areArrayEqual
+bool areVectorsEqual(const vector<int>& vec1, const vector<int>& vec2) {
+    return vec1 == vec2;
+}
+
+**** TAGS ****
+
+areArrayEqual 
+**** SNIPPET ****
+insertAtBeginning_CircularList
+void insertAtBegin(int value){
+        Node* new_node = new Node(value);
+        if(head == NULL){
+            head = new_node;
+            new_node->next = head;
+            return;
+        }
+        Node* tail = head;
+        while(tail->next!=head){
+            tail = tail->next;
+        }
+        //now tail is pointing to the last node
+        tail->next = new_node;
+        new_node->next = head;
+        head = new_node;
+         return;
+} 
+
+**** TAGS ****
+
+tag_insertAtBeginning_CircularList 
+**** SNIPPET ****
+insertPos_Singly
+void insert_Pos(Node* &head,int val,int pos){
+     if(pos==0){
+        insert_start(head,val);
+        return;
+     }
+     Node* new_node = new Node(val);
+     Node *temp = head;
+     int curr_pos=0;
+     while(curr_pos != pos-1){
+        temp=temp->next;
+        curr_pos++;
+     } 
+     //temp is pointing to node at pos-1
+     new_node->next = temp->next;//temp->next is pointing to the at pos
+      temp->next = new_node;
+}
+
+**** TAGS ****
+
+Tag_InsertPos_Singly 
+**** SNIPPET ****
+selection_sort
+void selectionSort(vector<int> &v)
+{
+
+    int n = v.size();
+
+    for(int i=0;i<n-1;i++)
+    {
+        int min_idx = i;
+     
+
+          for(int j=i+1;j<n;j++)
+          {
+            if(v[j]<v[min_idx])
+            {
+                min_idx = j;
+            }
+
+          }
+
+          if(i != min_idx)
+          {
+            swap(v[i],v[min_idx]);
+              
+          }
+    }
+}
+
+**** TAGS ****
+
+selectionSort 
+**** SNIPPET ****
+merge_sort
+void merge(int arr[] ,int l,int mid,int r){
+
+    int an = mid-l+1;
+    int bn = r - mid;
+
+    int a[an],b[bn];
+
+    for(int i=0;i<an;i++) a[i] = arr[l+i];
+    for(int j=0;j<bn;j++)  b[j] = arr[mid+1+j];
+
+    int i=0;//initial index for first subarray ,a
+    int j=0;//initial index for second subarray,b
+    int k = l;//initial index for combine array
+
+    while(i<an || j<bn)
+    {
+        if(a[i]<b[j]){
+            arr[k++] = a[i++];
+        }
+        else{
+            arr[k++] = b[j++];
+        }
+
+      }
+
+   //if in uppear condition you put && logical operator then write 
+   //these two while loop
+   /* while(i<an)   arr[k++] = a[i++];
+    while(j<bn)   arr[k++] = b[j++];
+    */
+}
+void mergeSort(int arr[],int l,int r){
+    
+    if(l>=r) return;
+
+    int mid = (l+r)/2;
+
+    mergeSort(arr,l,mid);
+    mergeSort(arr,mid+1,r);
+    merge(arr,l,mid,r);
+
+}
+
+**** TAGS ****
+
+merge_sort 
+**** SNIPPET ****
+reverseListKtime_Singly
+Node* reverseK(Node* &head,int k){
+    Node* prevptr = NULL;
+    Node* currptr = head;
+    int counter = 0;//for counting first k nodes
+    while(currptr!=NULL && counter<k){//reversing first k nodes
+        Node* nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+        counter++;
+    }
+    //current pointer gives (k+1) pointer
+    if(currptr!= NULL){
+    Node* new_head = reverseK(currptr,k);//recursive call
+     head->next = new_head;
+    }
+    return prevptr;//previous pointer give us the new_head of connected linked list 
+}
+
+**** TAGS ****
+
+tag_reverseListKtime_Singly 
+**** SNIPPET ****
+isSymmetric2DArray
+// Function to check if a 2D array is symmetric
+bool isSymmetric2DArray(int arr[][3], int rows, int cols) {
+    if (rows != cols) return false;
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (arr[i][j] != arr[j][i]) return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isSymmetric2DArray 
+**** SNIPPET ****
+removeDuplicates
+// Function to remove duplicates from a vector
+void removeDuplicates(vector<int> &vec) {
+    vector<int> unique;
+    for (int num : vec) {
+        if (!vectorContains(unique, num)) {
+            unique.push_back(num);
+        }
+    }
+    vec = unique;
+}
+
+**** TAGS ****
+
+removeDuplicate 
+**** SNIPPET ****
+sumAboveMainDiagonal
+// Function to find the sum of elements above the main diagonal in a 2D array
+int sumAboveMainDiagonal(int arr[][3], int rows, int cols) {
+    int sum = 0;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = i + 1; j < cols; ++j) {
+            sum += arr[i][j];
+        }
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+sumAboveMainDiagonal 
+**** SNIPPET ****
+findSecondLargestInArray
+// Function to find the second largest element in an array
+int findSecondLargestInArray(int arr[], int size) {
+    int largest = arr[0], secondLargest = INT_MIN;
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+    return secondLargest;
+}
+
+**** TAGS ****
+
+findSecondLargestArray 
+**** SNIPPET ****
+detect_Cycle_Singly
+bool detectCycle(Node* head){
+    if(!head) {
+        return false;
+    }
+   Node* slow = head;
+   Node* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            return true;
+        }
+    }
+  return false;
+}
+
+**** TAGS ****
+
+tag_detect_Cycle_Singly 
+**** SNIPPET ****
+isUpperTriangular
+// Function to check if a 2D array is upper triangular
+bool isUpperTriangular(int arr[][3], int rows, int cols) {
+    for (int i = 1; i < rows; ++i) {
+        for (int j = 0; j < i && j < cols; ++j) {
+            if (arr[i][j] != 0) return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isUpperTriangular 
+**** SNIPPET ****
+dotProduct
+// Function to compute the dot product of two vectors
+int dotProduct(const vector<int>& vec1, const vector<int>& vec2) {
+    int result = 0;
+    for (size_t i = 0; i < vec1.size() && i < vec2.size(); ++i) {
+        result += vec1[i] * vec2[i];
+    }
+    return result;
+}
+
+**** TAGS ****
+
+dotProduct_Array 
+**** SNIPPET ****
+SearchInSingly
+bool searchInList(const Node* head, int val) {
+    const Node* temp = head;
+    while (temp) {
+        if (temp->data == val) {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}
+
+**** TAGS ****
+
+Tag_SearchInList 
+**** SNIPPET ****
+checkElementInArrayUnique
+// Function to check if a vector contains only unique elements
+bool areAllElementsUnique(const vector<int>& vec) {
+    vector<int> sortedVec = vec;
+    sort(sortedVec.begin(), sortedVec.end());
+    for (size_t i = 1; i < sortedVec.size(); ++i) {
+        if (sortedVec[i] == sortedVec[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+checkElementInArrayUnique 
+**** SNIPPET ****
+deleteEnd_Doubly
+void deleteEnd(){
+    if(head == NULL) {
+        return;
+    }
+    Node* temp = tail;
+    tail = tail->prev; 
+    if(tail==NULL){
+         head = NULL;
+    }
+    else {
+        tail->next = NULL;
+    }
+    free(temp);
+   return;    
+}
+
+**** TAGS ****
+
+tag_DeleteEnd_DoublyList 
+**** SNIPPET ****
+node
+class Node{
+public:
+   int val;
+   Node* next;
+   Node(int data){
+     val = data;
+     next = NULL;
+}
+};
+
+**** TAGS ****
+
+Nodecode 
+**** SNIPPET ****
+partitionArray
+// Function to partition a vector into two vectors based on a predicate function
+void partitionVector(const vector<int>& vec, vector<int>& trueVec, vector<int>& falseVec, function<bool(int)> pred) {
+    for (int num : vec) {
+        if (pred(num)) {
+            trueVec.push_back(num);
+        } else {
+            falseVec.push_back(num);
+        }
+    }
+}
+
+**** TAGS ****
+
+partitionArray 
+**** SNIPPET ****
+rotateArrayRight
+// Function to rotate elements in a vector to the right by a specified number of positions
+void rotateVectorRight(vector<int>& vec, int positions) {
+    if (vec.empty()) return;
+    positions %= vec.size();
+    rotate(vec.rbegin(), vec.rbegin() + positions, vec.rend());
+}
+
+**** TAGS ****
+
+rotateArrayRight 
+**** SNIPPET ****
+countEvenInArray
+// Function to count the number of even elements in an array
+int countEvenInArray(int arr[], int size) {
+    int count = 0;
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] % 2 == 0) {
+            count++;
+        }
+    }
+    return count;
+}
+
+**** TAGS ****
+
+countEvenInArray 
+**** SNIPPET ****
+roateArrayLeft
+void rotateVectorLeft(vector<int>& vec, int positions) {
+    if (vec.empty()) return;
+    positions %= vec.size();
+    rotate(vec.begin(), vec.begin() + positions, vec.end());
+}
+
+**** TAGS ****
+
+rotateArrayLeft 
+**** SNIPPET ****
+isPalindrome_DoublyList
+bool isPalindrome(Node* head,Node* tail){
+   while(head!=tail && tail!=head->prev){
+     if(head->val!=tail->val) return false;
+     head = head->next;
+     tail = tail->prev;
+   }
+   return true;
+}
+
+**** TAGS ****
+
+tag_isPalindrome_DoublyList 
+**** SNIPPET ****
+findIndexOfMaxInArray
+// Function to find the index of the maximum element in an array
+int findIndexOfMaxInArray(int arr[], int size) {
+    int maxIndex = 0;
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > arr[maxIndex]) {
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
+}
+
+**** TAGS ****
+
+findIndexOfMaxInArray 
+**** SNIPPET ****
+isAntiDiagonalMatrix
+// Function to check if a 2D array is an anti-diagonal matrix (all non-diagonal elements are zero)
+bool isAntiDiagonalMatrix(int arr[][3], int rows, int cols) {
+    if (!isSquareMatrix(arr, rows, cols)) return false;
+    
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            if (i + j != rows - 1 && arr[i][j] != 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isAntiDiagonalMatrix 
+**** SNIPPET ****
+areArrayDisjoint
+// Function to check if two vectors are disjoint (have no common elements)
+bool areVectorsDisjoint(const vector<int>& vec1, const vector<int>& vec2) {
+    for (int num1 : vec1) {
+        if (find(vec2.begin(), vec2.end(), num1) != vec2.end()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+areArrayDisjoint 
+**** SNIPPET ****
+deleteDupliCate_Singly
+void deleteDuplicate(Node* &head){
+  Node *current_node = head;
+  while(current_node){
+    while(current_node->next && current_node->val==current_node->next->val){
+        //delete curr->next
+        Node* temp = current_node->next;//node to be deleted
+        current_node->next = current_node->next->next;
+        free(temp);
+    }
+    //this loops ends when current node and next node values are different
+    //or linked list ends
+    current_node=current_node->next;
+  }    
+  return;
+}
+
+**** TAGS ****
+tag_deleteDuplicate_Singly 
+**** SNIPPET ****
+removeAllOccuranceFromArray
+// Function to remove all occurrences of a value from a vector
+void removeAllOccurrencesFromVector(vector<int>& vec, int value) {
+    vec.erase(remove(vec.begin(), vec.end(), value), vec.end());
+}
+
+**** TAGS ****
+
+removeAllOccuranceFromArray 
+**** SNIPPET ****
+insertAtEnd
+void insertAtEnd(Node*& head, int value) {
+    Node* newNode = Node(value);
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+        Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    
+}
+
+**** TAGS ****
+
+tagInsertEnd 
+**** SNIPPET ****
+RotateByK_Singly
+Node* rotateByK(Node* &head,int k){
+  //1.find length of the linked list
+  int n=0;
+ //2. find tail Node
+ Node* tail = head;
+ while(tail->next!= NULL){
+   n++;
+   tail = tail->next;
+ }
+ n++;//for including last node
+k = k % n;
+if(k==0){ 
+   return head;
+   }
+tail->next = head;
+//3.travese n-k nodes
+Node* temp = head;
+for(int i=1;i<n-k;i++){
+   temp = temp->next;
+}
+//now temp is pointing to the n-k node
+ Node* new_node = temp->next;
+temp->next=NULL;
+ return new_node;
+}
+
+**** TAGS ****
+
+tag_RotateByK_Singly 
+**** SNIPPET ****
+node_DoublyList
+class Node{
+    public:
+    int val;
+    Node* next;
+    Node* prev;
+    Node(int data){
+        val = data;
+        next = NULL;
+        prev = NULL;
+    }
+};
+
+**** TAGS ****
+
+tag_Node_DoublyLis 
+**** SNIPPET ****
+insertPos_CircularList
+void insertPos(Node* &head,int value,int pos){
+      if(pos==0){
+        return;
+      }
+      Node* new_node = new Node(value);
+      Node* tail = head;
+      int currPos = 0;
+      while(currPos!=pos-1){
+        tail = tail->next;
+        currPos++;
+      }  
+      //now tail is pointing to pos-1 node
+      new_node->next = tail->next;
+      tail->next = new_node;
+}
+
+**** TAGS ****
+
+tag_insertPos_CircularList 
+**** SNIPPET ****
+insertEnd_DoublyList
+void insertEnd(Node* &head,int value){
+  Node* new_node = new Node(value);
+  if(tail == NULL){
+    head = new_node;
+    tail = new_node;
+    return;
+  }
+  tail->next = new_node;
+  new_node->prev = tail;
+  tail = new_node;
+  return;
+}
+
+**** TAGS ****
+
+tag_insertEnd_DoublyList 
+**** SNIPPET ****
+class_Of_SinglyList
+class Node{
+  public:
+     int val;
+     Node* next;
+
+     Node(int data){
+        val = data;
+        next = NULL;
+     }
+
+};
+
+class LinkedList{
+    public:
+     Node *head;
+
+     LinkedList(){
+        head = NULL;
+     }
+
+     void insertTail(int value){
+
+        Node* new_node = new Node(value);
+
+        if(head == NULL){//if list is empty
+           head = new_node;
+           return;
+        }
+
+        Node *temp = head;
+       while(temp->next!= NULL)
+       {
+        temp = temp->next;
+       }
+          temp->next = new_node;
+     }
+
+     void display(){
+     
+        Node* temp = head;
+
+        while(temp!= NULL){
+            cout<<temp->val<<"->";
+            temp = temp->next;
+        }        
+          cout<<"NULL"<<endl;
+     }
+};
+
+**** TAGS ****
+
+class_Of_SinglyList 
+**** SNIPPET ****
+binarySearch_Recursive
+int binarysearchRec(vector<int> &input,int target,int lo,int hi)
+{
+    if(lo>hi){ 
+        return -1;
+    }
+
+    int mid = (lo+hi)/2;
+
+    if(input[mid] == target) return mid;
+    else if(input[mid]<target)  return binarysearchRec(input,target,mid+1,hi);
+    else return binarysearchRec(input,target,lo,mid-1);
+}
+
+**** TAGS ****
+
+binarySearch_Recursive 
+**** SNIPPET ****
+Palindrome_Singly
+bool isPalindrome(Node* head){
+  //1.find middle element
+   Node* slow = head;
+   Node* fast = head;
+   while(fast &&  fast->next){
+    slow = slow->next;
+    fast = fast->next->next;
+   }
+   //now slow is pointing to middle element
+   //2. break the linked list in the middle 
+   Node* curr = slow->next;
+   Node* prev = slow;
+   slow->next = NULL;
+  //3. reverse the second half of linked list
+   while(curr){
+    Node* nextNode = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = nextNode;
+   }
+   // prev is the head pointer of the second node
+   // to check two linkedlists are equal
+   Node* head1 = head;
+   Node* head2 = prev;
+   while(head2){
+    if(head1->val!=head2->val) {
+        return false;
+    }
+     head1 = head1->next;
+     head2 = head2->next;
+   }
+    return true;
+}
+
+**** TAGS ****
+
+palindrome_Singly 
+**** SNIPPET ****
+findMiddleElement_Singly
+Node* midleNode(Node* &head){
+   Node* slow = head;
+   Node* fast = head;
+   while(fast!= NULL && fast->next!= NULL){
+    slow = slow->next;
+    fast = fast->next->next;
+   }  
+ return slow;
+}
+
+**** TAGS ****
+
+tag_findMiddleElement_Singly 
+**** SNIPPET ****
+findLastIndexInArray
+// Function to find the index of the last occurrence of a value in an array
+int findLastIndexInArray(int arr[], int size, int value) {
+    for (int i = size - 1; i >= 0; --i) {
+        if (arr[i] == value) {
+            return i;
+        }
+    }
+    return -1; // Value not found
+}
+
+**** TAGS ****
+
+findLastIndexArray 
+**** SNIPPET ****
+deleteBeginning_DoublyList
+void deleteStart(Node* &head){
+ if(head == NULL){
+    cout<<"List is empty.No deletion perform!"<<endl;
+ }
+ Node* temp = head;
+ head = head->next;
+ if(head == NULL){//if head list have only one node
+   tail = NULL;
+ }
+ else{
+    head->prev = NULL;
+ }
+ free(temp);
+}
+
+**** TAGS ****
+
+tag_deleteBeginning_DoublyList 
+**** SNIPPET ****
+arrayAverage
+// Function to find the average of elements in an array
+double arrayAverage(int arr[], int size) {
+    if (size == 0)
+        return 0;
+    double sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum / size;
+}
+
+**** TAGS ****
+
+arrayAverage 
+**** SNIPPET ****
+deleteAtHead_Singly
+void deleteHead(Node* &head){
+    if(head == NULL) return;
+    Node *temp = head;
+    head = head->next;
+    free(temp); 
+}
+
+**** TAGS ****
+
+Tag_DeleteAt_Head 
+**** SNIPPET ****
+arrayContainValue
+bool vectorContains(vector<int> &vec, int value) {
+    for (int num : vec) {
+        if (num == value) {
+            return true;
+        }
+    }
+    return false;
+}
+
+**** TAGS ****
+
+arrayContain_Array 
+**** SNIPPET ****
+squareRoot_Without_STL
+void squareRoot(int x){
+     int ans=-1;
+
+    for(int i=1;i<= x;i++)
+    {
+    if(i*i<=x)
+    {
+        ans = i;
+    }
+    else break;
+    }
+    cout<<"Square root of "<<x<<" is: "<<ans;
+    return;
+}
+
+**** TAGS ****
+
+squareRoot_Without_Library 
+**** SNIPPET ****
+isArraySorted
+// Function to check if an array is sorted in ascending order
+bool isArraySorted(int arr[], int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        if (arr[i] > arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+isArraySorted 
+**** SNIPPET ****
+countEle_LessThanIn_Array
+int countElementsLessThanValueInVector(const vector<int>& vec, int value) {
+    int count = 0;
+    for (int num : vec) {
+        if (num < value) {
+            count++;
+        }
+    }
+    return count;
+}
+
+**** TAGS ****
+
+countEle_LessthanIn_Array 
+**** SNIPPET ****
+insertPos_DoublyList
+void insertPos(Node* &head,int value,int pos){
+    //assuming pos is less or equal to length
+    Node* temp = head;
+    int count = 1;
+    while(count<(pos-1)){
+        temp = temp->next;
+        count++;
+    }
+    //now temp is pointing to the pos-1 node
+    Node* new_node = new Node(value);
+    new_node->next = temp->next;
+    temp->next = new_node;
+    new_node->prev = temp;
+    new_node->prev->next = new_node;
+    return;
+}
+
+**** TAGS ****
+
+tag_insertPos_DoublyList 
+**** SNIPPET ****
+radix_sort
+void countSort(vector<int> &v,int pos)
+{
+
+    int n =v.size();
+
+    //create frequency array
+
+    vector<int> freq(10,0);
+
+    for(int i=0;i<n;i++)
+    {
+        freq[(v[i]/pos)%10]++;
+    }
+
+    //cumulative frequency
+    for(int i=1;i<10;i++)
+    {
+        freq[i]+=freq[i-1];
+    }
+
+    //ans array
+
+    vector<int> ans(n);
+     
+    for(int i=n-1;i>=0;i--)
+    {
+        ans[--freq[(v[i]/pos)%10]] = v[i];
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        v[i] = ans[i];
+    }
+   
+}
+void radixSort(vector<int> &v){
+
+    
+    int max_ele = v[0];
+    
+    for(auto x :v)
+    {
+        max_ele = max(x,max_ele);
+    }
+
+    for(int pos=1;max_ele/pos>0;pos*=10)
+    {
+        countSort(v,pos);
+    }
+
+}
+
+**** TAGS ****
+
+radix_sort 
+**** SNIPPET ****
+deleteEnd_CircularList
+   void deleteEnd(){
+    if(head==NULL){
+        return;
+    }
+    Node* tail = head;
+    while(tail->next->next!=head){
+          tail = tail->next;
+    }  
+    //here tail is pointing to second last node
+    Node* temp = tail->next;
+    tail->next = head;
+    free(temp);
+}
+
+**** TAGS ****
+
+tag_deleteEnd_CircularList 
+**** SNIPPET ****
+length_Of_Singly_List
+int getlength(Node* head){
+   Node* temp = head;
+   int len=0;
+   while(temp!= NULL){
+      len++;
+      temp = temp->next;
+   }
+   return len;
+}
+
+**** TAGS ****
+
+tag_Length_SinglyList 
+**** SNIPPET ****
+decode_string
+string decodeString(string s){
+    string result = "";
+    //travesing the encoded string
+    for(int i=0;i<s.length();i++)
+    {
+        if(s[i]!= ']'){
+            result.push_back(s[i]);
+        }
+        else{
+            //extract string from result
+            string str = "";
+            while(!result.empty() && result.back()!= '['){
+                str.push_back(str.back());
+                result.pop_back();
+            }
+            //reversing the str
+            reverse(str.begin(),str.end()); 
+            //extract num from result
+             string nums ="";
+             while(!result.empty() &&(result.back()>='0' && result.back()<='9'))
+             {
+                nums.push_back(result.back());
+                result.pop_back();
+             }
+            //reversing the number string
+              reverse(nums.begin(),nums.end());
+            //convert string to integer
+            int int_num =stoi(nums); 
+            //inserting str in result int_num times
+            while(int_num){
+                result+=str;
+                int_num--;
+            }
+        }  
+    }
+     return result;
+}
+
+**** TAGS ****
+
+tag_decodeString 
+**** SNIPPET ****
+ArrangeOddEven_Singly
+Node* oddEvenLL(Node* &head){
+    if(head==NULL) return head;
+   Node* evenHead = head->next;
+   Node* oddptr = head;
+   Node* evenptr = evenHead;
+   while(evenptr!= NULL && evenptr->next!=NULL){
+    oddptr->next = oddptr->next->next;
+    evenptr->next = evenptr->next->next;
+    oddptr = oddptr->next;
+    evenptr = evenptr->next;
+   }
+   oddptr->next = evenHead;
+   return head;
+}
+
+**** TAGS ****
+
+tag_ArrangeOddEven_Singly 
+**** SNIPPET ****
+removeElementAtIndex_Array
+// Function to remove an element at a specified index from a vector
+void removeElementAtIndex(vector<int> &vec, int index) {
+    if (index >= 0 && index < vec.size()) {
+        vec.erase(vec.begin() + index);
+    }
+}
+
+**** TAGS ****
+
+removeElementAtIndex 
+**** SNIPPET ****
+deleteAtEnd_Singly
+void deleteEnd(Node* &head){
+     Node *second_last = head;
+     while(second_last->next->next!= NULL){
+        second_last = second_last->next;
+     }
+     //now second_last points to the second last node
+     Node* temp = second_last->next;
+     second_last->next = NULL;
+     free(temp);
+}
+
+**** TAGS ****
+deleteATEnd 
+**** SNIPPET ****
+sumOfElementsIn2DArray
+int sumOfElementsIn2DArray(int arr[][3], int rows, int cols) {
+    int sum = 0;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            sum += arr[i][j];
+        }
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+sumOfElementsIn2DArray 
+**** SNIPPET ****
+insertAtPos_Singly
+void insert_Pos(Node* &head,int val,int pos){
+     if(pos==0){
+        insert_start(head,val);
+        return;
+     }
+     Node* new_node = new Node(val);
+     Node *temp = head;
+     int curr_pos=0;
+     while(curr_pos != pos-1){
+        temp=temp->next;
+        curr_pos++;
+     } 
+     //temp is pointing to node at pos-1
+     new_node->next = temp->next;//temp->next is pointing to the at pos
+      temp->next = new_node;
+}
+
+**** TAGS ****
+
+tag_insertAtPos_Singly 
+**** SNIPPET ****
+arraySum
+int arraySum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+arraySum 
+**** SNIPPET ****
+fill2DArrayRandom
+// Function to fill a 2D array with random numbers
+void fill2DArrayRandom(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            arr[i][j] = rand() % 100; // Generate random numbers between 0 and 99
+        }
+    }
+}
+
+**** TAGS ****
+
+fill2DArrayRandom 
+
