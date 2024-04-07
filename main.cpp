@@ -40,6 +40,8 @@ int main()
         cout << YELLOW << "Enter 3 for List Snippets" << RESET << endl;
         cout << YELLOW << "Enter 4 for List Tags" << RESET << endl;
         cout << YELLOW << "Enter 5 for Search by Tag" << RESET << endl;
+        cout << YELLOW << "Enter 6 for Edit Snippet" << RESET << endl;
+        cout << YELLOW << "Enter 7 for Remove Snippet" << RESET << endl;
         int choice;
         cout << "\n" << BOLD_RED << "Enter your choice (1-8): " << RESET;
 
@@ -94,24 +96,87 @@ int main()
             cout << "------------------------------------------------------------" << endl;
             break;
         }
-         case 3:
+        case 3:
+        {
             snippetManager.listSnippets();
             cout << "------------------------------------------------------------" << endl;
             break;
-        case 4:{
+        }
+        case 4:
+        {
             snippetManager.listTags();
             cout << "------------------------------------------------------------" << endl;
             break;
         }
-         case 5:
-            {
+        case 5:
+        {
             string tag;
             cout << endl<< "Enter tag that you search: ";
             cin >> tag;
             snippetManager.searchByTag(tag);
             cout << "------------------------------------------------------------" << endl;
             break;
-            }   
+        }  
+        case 6:
+        {
+
+            string name, newCode;
+
+            string newTags;
+
+            cout << "Enter snippet name that you edit: ";
+            cin >> name;
+            if (snippetManager.check_if_available(name))
+            {
+                cout << endl
+                     << "For Edit Snippet '" << BOLD_BLUE << name << RESET "'" << BOLD_RED << " not found" << RESET << endl;
+            }
+            else
+            {
+                cout << "Enter new code for your snippet (enter " << BOLD_GREEN << "##" << RESET << " on an empty line to finish):" << endl;
+
+                cin.ignore();
+
+                string codeLine;
+
+                while (getline(cin, codeLine))
+                {
+                    if (codeLine == "##")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        newCode += codeLine + '\n';
+                    }
+                }
+
+                cout << "Enter new tag " << BOLD_GREEN << "(space-separated)" << RESET << " after you edit Code of your Snippet: ";
+                string tagInput;
+                getline(cin, tagInput);
+                snippetManager.editSnippet(name, newCode, tagInput);
+            }
+            cout << "------------------------------------------------------------" ;
+            cout<< endl;
+            break;
+        }
+        case 7:
+        {
+
+            string name;
+
+            cout << "Enter snippet name that you remove: ";
+
+            cin >> name;
+
+            snippetManager.removeSnippet(name);
+
+            cout << "------------------------------------------------------------" ;
+            cout<< endl;
+
+            break;
+        }
+        
         }
     }
 
