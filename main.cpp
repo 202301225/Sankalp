@@ -38,6 +38,8 @@ int main()
         cout << YELLOW << "Enter 1 for Add Snippet" << RESET << endl;
         cout << YELLOW << "Enter 2 for Get Snippet" << RESET << endl;
         cout << YELLOW << "Enter 3 for List Snippets" << RESET << endl;
+        cout << YELLOW << "Enter 4 for List Tags" << RESET << endl;
+        cout << YELLOW << "Enter 5 for Search by Tag" << RESET << endl;
         int choice;
         cout << "\n" << BOLD_RED << "Enter your choice (1-8): " << RESET;
 
@@ -96,6 +98,20 @@ int main()
             snippetManager.listSnippets();
             cout << "------------------------------------------------------------" << endl;
             break;
+        case 4:{
+            snippetManager.listTags();
+            cout << "------------------------------------------------------------" << endl;
+            break;
+        }
+         case 5:
+            {
+            string tag;
+            cout << endl<< "Enter tag that you search: ";
+            cin >> tag;
+            snippetManager.searchByTag(tag);
+            cout << "------------------------------------------------------------" << endl;
+            break;
+            }   
         }
     }
 
