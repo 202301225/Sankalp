@@ -197,6 +197,43 @@ void listTags()
         }
     }
 
- 
+     void listSnippets()
+    {
+
+        if (snippets.empty())
+        {
+
+            cout << BOLD_RED << "No Snippets available!.file is Empty" << RESET << endl;
+        }
+        else
+
+        {
+
+            cout << endl;
+             cout  << MAGENTA << "Available snippets are:" << RESET << endl;
+
+            int count = 1;
+
+            for (auto it = snippets.begin(); it != snippets.end(); ++it)
+            {
+
+                cout << BOLD_YELLOW << count << RESET << "->  " << BOLD_CYAN << it->first << RESET << endl;
+
+                count++;
+            }
+        }
+    }
+    
+    void editSnippet(string &Snippetname, string &CodeOfSnippet, string &SetOfTags)
+
+    {
+
+        snippets[Snippetname] = make_pair(CodeOfSnippet, SetOfTags);
+
+        saveSnippets();
+
+        cout << endl
+             << "Snippet '" << BOLD_BLUE << Snippetname << RESET << "'" << BOLD_GREEN << " edited successfully" << RESET << endl;
+    }
   
 };
