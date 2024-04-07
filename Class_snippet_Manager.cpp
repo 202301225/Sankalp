@@ -305,5 +305,14 @@ public:
         cout << endl
              << "Snippet '" << BOLD_BLUE << Snippetname << RESET << "'" << BOLD_GREEN << " edited successfully" << RESET << endl;
     }
+
+    bool check_if_available(string &name)
+    {
+
+        auto it1 = snippets.find(name);
+
+        return it1 == snippets.end();
+    }
+
   
 };
