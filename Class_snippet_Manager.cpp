@@ -87,6 +87,35 @@ public:
         return str;
     }
 
+    void saveSnippets()
+    {
+
+        ofstream file(store_File);
+
+        if (file.is_open())
+        {
+
+            for (auto it = snippets.begin(); it != snippets.end(); ++it)
+            {
+                file << "**** SNIPPET ****" << endl;
+                file << it->first << '\n';
+
+                file << it->second.first << '\n';
+
+                file << "**** TAGS ****\n\n";
+                file << it->second.second << ' ';
+
+                file << '\n';
+            }
+
+            file.close();
+        }
+        else
+        {
+            cout << BOLD_RED << "Unable to open file for Saving Your Snippet" << RESET << endl;
+        }
+    }
+
     void loadSnippets()
     {
         snippets.clear();
@@ -123,7 +152,68 @@ public:
         }
     }
 
-void listTags()
+    void addSnippet(const string &snippetname, const string &codeSnippet, const string &tagOfSnippet)
+    {
+        snippets[snippetname] = make_pair(codeSnippet, tagOfSnippet);
+        saveSnippets();
+
+        cout << endl
+             << BOLD_GREEN << "Snippet  '" << BOLD_BLUE << snippetname << RESET << BOLD_GREEN << "' added successfully.\n"
+             << RESET;
+    }
+
+    void getSnippet(string &Snippetname)
+    {
+        auto it = snippets.find(Snippetname);
+        if (it != snippets.end())
+        {
+            cout << "\n Snippet is '" << BOLD_BLUE << Snippetname << RESET << "':\n";
+
+            cout << endl
+                 << BOLD_CYAN << it->second.first << RESET << '\n';
+
+            cout << "Tag for this snippet is : ";
+
+            cout << BOLD_BLUE << it->second.second << RESET << endl;
+
+            cout << endl;
+        }
+        else
+        {
+            string similarName = findNearestSnippet(Snippetname);
+
+            if (!similarName.empty())
+            {
+                cout << "\n"
+                     << "Snippet '" << BOLD_BLUE << Snippetname << RESET << "' " << BOLD_RED << " not found" << RESET << "\n\nI have '" << BOLD_RED << similarName << RESET << "' snippet Are you Want this snippet '" << BOLD_RED << similarName << RESET << "'?:\n\n";
+
+                cout << "Enter " << BOLD_YELLOW << "'YES'" << RESET << " to select this snippet or " << BOLD_YELLOW << "'NO'" << RESET << " to cancel this snippet: ";
+
+                string choice;
+                cin >> choice;
+
+                transform(choice.begin(), choice.end(), choice.begin(), [](char c)
+                          { return tolower(c); });
+
+                if (choice == "yes")
+                {
+                    getSnippet(similarName);
+                }
+                else
+                {
+                    cout << endl
+                         << BOLD_RED << "Operation cancelled" << RESET << endl;
+                }
+            }
+            else
+            {
+                cout << BOLD_RED << "snippet '" << RESET << BOLD_BLUE << Snippetname << RESET << BOLD_RED << "' is not found" << RESET << endl;
+            }
+        }
+    }
+
+
+    void listTags()
     {
 
         int count = 1;
@@ -177,7 +267,6 @@ void listTags()
     }
 
     void removeSnippet(string &Snippet_name)
-
     {
 
         auto it = snippets.find(Snippet_name);
