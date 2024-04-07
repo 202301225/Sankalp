@@ -4861,6 +4861,898 @@ void insertSorted(const T& item) {
 
 **** TAGS ****
 
-insertsorted function of queue    
+insertsorted function of queue
+**** SNIPPET ****
+regularOctagonArea
+double regularOctagonArea(double side) {
+    return 2 * (1 + sqrt(2)) * side * side;
+}
 
+**** TAGS ****
 
+calculate_regularOctagonArea 
+**** SNIPPET ****
+regularHexagonArea
+double regularHexagonArea(double side) {
+    return (3 * sqrt(3) * side * side) / 2;
+}
+
+**** TAGS ****
+
+calculate_regularHexagonArea 
+**** SNIPPET ****
+regularPolygonPerimeter
+double regularPolygonPerimeter(int n, double side) {
+    return n * side;
+}
+
+**** TAGS ****
+
+calculate_regularPolygonPerimeter 
+**** SNIPPET ****
+cylinderVolume
+double cylinderVolume(double radius, double height) {
+    const double pi = 3.14159265358979323846;
+    return pi * radius * radius * height;
+}
+
+**** TAGS ****
+
+calculate_cylinderVolume 
+**** SNIPPET ****
+trapezoidArea
+double trapezoidArea(double base1, double base2, double height) {
+    return ((base1 + base2) / 2) * height;
+}
+
+**** TAGS ****
+
+calculate_trapezoidArea_ 
+**** SNIPPET ****
+parallelogramArea
+double parallelogramArea(double base, double height) {
+    return base * height;
+}
+
+**** TAGS ****
+
+calculate_parallelogramArea 
+**** SNIPPET ****
+rectangleDiagonal
+double rectangleDiagonal(double length, double width) {
+    return sqrt(length * length + width * width);
+}
+
+**** TAGS ****
+
+calculate_rectangleDiagonal 
+**** SNIPPET ****
+sphereSurfaceArea
+double sphereSurfaceArea(double radius) {
+    const double pi = 3.14159265358979323846;
+    return 4 * pi * radius * radius;
+}
+
+**** TAGS ****
+
+calculate_sphereSurfaceArea 
+**** SNIPPET ****
+sphereVolume
+double sphereVolume(double radius) {
+    const double pi = 3.14159265358979323846;
+    return (4.0 / 3.0) * pi * radius * radius * radius;
+}
+
+**** TAGS ****
+
+calculate_sphereVolume 
+**** SNIPPET ****
+cubeVolume
+double cubeVolume(double side) {
+    return side * side * side;
+}
+
+**** TAGS ****
+
+calculate_cubeVolume 
+**** SNIPPET ****
+circleArea
+double circleArea(double radius) {
+    const double pi = 3.14159265358979323846;
+    return pi * radius * radius;
+}
+
+**** TAGS ****
+
+calculate_circleArea 
+**** SNIPPET ****
+regularPolygonArea
+double regularPolygonArea(int n, double side) {
+    const double pi = 3.14159265358979323846;
+    return (n * side * side) / (4 * tan(pi / n));
+}
+
+**** TAGS ****
+
+calculate_regularPolygonArea 
+**** SNIPPET ****
+squarePerimeter
+double squarePerimeter(double side) {
+    return 4 * side;
+}
+
+**** TAGS ****
+
+calculate_squarePerimeter 
+**** SNIPPET ****
+squareArea
+double squareArea(double side) {
+    return side * side;
+}
+
+**** TAGS ****
+
+calculate_squareArea 
+**** SNIPPET ****
+lcm
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+// Function to calculate LCM using GCD
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+**** TAGS ****
+
+find_lcm 
+**** SNIPPET ****
+productOfArray
+int productOfArray(const std::vector<int>& arr) {
+    int product = 1;
+    for (int num : arr) {
+        product *= num;
+    }
+    return product;
+}
+
+**** TAGS ****
+
+get_productOfArray 
+**** SNIPPET ****
+binomialCoefficient
+int binomialCoefficient(int n, int k) {
+    if (k == 0 || k == n) {
+        return 1;
+    }
+    return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
+}
+
+**** TAGS ****
+
+binomialCoefficient 
+**** SNIPPET ****
+check_ith_bit
+bool isBitSet(int num, int i) {
+    // Left shift 1 by i positions to create a mask with only the ith bit set
+    int mask = 1 << i;
+    // Bitwise AND operation to check if the ith bit is set
+    return (num & mask) != 0;
+}
+
+**** TAGS ****
+
+check_ith_bit_is_set_or_not 
+**** SNIPPET ****
+triangleArea
+double triangleArea(double base, double height) {
+    return (base * height) / 2;
+}
+
+**** TAGS ****
+
+calculate_triangleArea 
+**** SNIPPET ****
+isPerfect
+bool isPerfect(int num) {
+    int sum = 0;
+    for (int i = 1; i <= num / 2; ++i) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+    return sum == num;
+}
+
+**** TAGS ****
+
+check_number_is_perfect 
+**** SNIPPET ****
+divisors_of_number
+std::vector<int> findDivisors(int n) {
+    std::vector<int> divisors;
+    for (int i = 1; i <= n; ++i) {
+        if (n % i == 0) {
+            divisors.push_back(i);
+        }
+    }
+    return divisors;
+}
+
+**** TAGS ****
+
+find_divisors 
+**** SNIPPET ****
+calculatePiLeibniz
+double calculatePiLeibniz(int iterations) {
+    double pi = 0.0;
+    int sign = 1;
+    for (int i = 0; i < iterations; ++i) {
+        pi += sign / (2.0 * i + 1);
+        sign *= -1;
+    }
+    return 4 * pi;
+}
+
+**** TAGS ****
+
+calculate_PiLeibniz 
+**** SNIPPET ****
+isPowerOfTwo
+bool isPowerOfTwo(int num) {
+    if (num <= 0) {
+        return false;
+    }
+    return (num & (num - 1)) == 0;
+}
+
+**** TAGS ****
+
+is_power_of_two 
+**** SNIPPET ****
+isTriangular
+bool isTriangular(int num) {
+    int n = 1;
+    int triangular = 0;
+    while (triangular < num) {
+        triangular = n * (n + 1) / 2;
+        if (triangular == num) {
+            return true;
+        }
+        ++n;
+    }
+    return false;
+}
+
+**** TAGS ****
+
+check_is_number_tirangular 
+**** SNIPPET ****
+sumOfCubesOfDigits
+int sumOfCubesOfDigits(int num) {
+    int sum = 0;
+    while (num != 0) {
+        int digit = num % 10;
+        sum += digit * digit * digit;
+        num /= 10;
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+sumOfCubesOfDigits 
+**** SNIPPET ****
+count_set_bits
+int countSetBits(int num) {
+    int count = 0;
+    while (num) {
+        num &= (num - 1);
+        count++;
+    }
+    return count;
+}
+
+**** TAGS ****
+
+count_number_of_set_bit 
+**** SNIPPET ****
+rectanglePerimeter
+double rectanglePerimeter(double length, double width) {
+    return 2 * (length + width);
+}
+
+**** TAGS ****
+
+calculate_rectanglePerimeter 
+**** SNIPPET ****
+circlePerimeter
+double circlePerimeter(double radius) {
+    const double pi = 3.14159265358979323846;
+    return 2 * pi * radius;
+}
+
+**** TAGS ****
+
+calculate_circlePerimeter 
+**** SNIPPET ****
+productofdigits
+int productOfDigits(int num) {
+    int product = 1;
+    while (num != 0) {
+        product *= num % 10;
+        num /= 10;
+    }
+    return product;
+}
+
+**** TAGS ****
+
+find_product_of_digits 
+**** SNIPPET ****
+isPrime
+bool isPrime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+**** TAGS ****
+
+check_prime 
+**** SNIPPET ****
+suffix_sum
+std::vector<int> suffixSum(const std::vector<int>& arr) {
+    int n = arr.size();
+    std::vector<int> suffix(n);
+
+    suffix[n - 1] = arr[n - 1];
+    for (int i = n - 2; i >= 0; --i) {
+        suffix[i] = suffix[i + 1] + arr[i];
+    }
+
+    return suffix;
+}
+
+**** TAGS ****
+
+get_suffix_sum 
+**** SNIPPET ****
+isPerfectSquare
+bool isPerfectSquare(int num) {
+    int root = sqrt(num);
+    return root * root == num;
+}
+
+**** TAGS ****
+
+isPerfectSquare 
+**** SNIPPET ****
+gcd
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+**** TAGS ****
+
+find_gcd 
+**** SNIPPET ****
+calculatePiMonteCarlo
+double calculatePiMonteCarlo(int iterations) {
+    int insideCircle = 0;
+    for (int i = 0; i < iterations; ++i) {
+        double x = (double)rand() / RAND_MAX;
+        double y = (double)rand() / RAND_MAX;
+        if (x * x + y * y <= 1) {
+            insideCircle++;
+        }
+    }
+    return 4.0 * insideCircle / iterations;
+}
+
+**** TAGS ****
+
+calculatePi_MonteCarlo 
+**** SNIPPET ****
+gcdMultipleNumbers
+int gcdMultipleNumbers(const std::vector<int>& numbers) {
+    if (numbers.empty()) {
+        return 0; // No numbers provided
+    }
+    int result = numbers[0];
+    for (size_t i = 1; i < numbers.size(); ++i) {
+        result = gcd(result, numbers[i]);
+    }
+    return result;
+}
+
+**** TAGS ****
+
+get_gcdMultipleNumbers 
+**** SNIPPET ****
+isPalindromicPrime
+bool isPalindromicPrime(int num) {
+    if (num < 2) {
+        return false;
+    }
+    // Check for prime
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    // Check for palindrome
+    int reverse = 0, original = num;
+    while (num > 0) {
+        reverse = reverse * 10 + num % 10;
+        num /= 10;
+    }
+    return original == reverse;
+}
+
+**** TAGS ****
+
+chech_is_PalindromicPrime 
+**** SNIPPET ****
+reverseDigits
+int reverseDigits(int num) {
+    int reversed = 0;
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return reversed;
+}
+
+**** TAGS ****
+
+to_reversed_number 
+**** SNIPPET ****
+cubeSurfaceArea
+double cubeSurfaceArea(double side) {
+    return 6 * side * side;
+}
+
+**** TAGS ****
+
+calculate_cubeSurfaceArea 
+**** SNIPPET ****
+absoluteDifference
+int absoluteDifference(int num1, int num2) {
+    return abs(num1 - num2);
+}
+
+**** TAGS ****
+
+get_absoluteDifference 
+**** SNIPPET ****
+prifix_sum
+std::vector<int> prefixSum(const std::vector<int>& arr) {
+    int n = arr.size();
+    std::vector<int> prefix(n);
+
+    prefix[0] = arr[0];
+    for (int i = 1; i < n; ++i) {
+        prefix[i] = prefix[i - 1] + arr[i];
+    }
+
+    return prefix;
+}
+
+**** TAGS ****
+
+get_prifix_sum 
+**** SNIPPET ****
+isSquareNumber
+bool isSquareNumber(int num) {
+    int sqrtNum = sqrt(num);
+    return sqrtNum * sqrtNum == num;
+}
+
+**** TAGS ****
+
+check_is_squre_number 
+**** SNIPPET ****
+rectangleArea
+double rectangleArea(double length, double width) {
+    return length * width;
+}
+
+**** TAGS ****
+
+calculate_rectangleArea 
+**** SNIPPET ****
+fibonacciBinet
+int fibonacciBinet(int n) {
+    double phi = (1 + sqrt(5)) / 2;
+    double psi = (1 - sqrt(5)) / 2;
+    return round((pow(phi, n) - pow(psi, n)) / sqrt(5));
+}
+
+**** TAGS ****
+
+calculate_fibonacciBinet 
+**** SNIPPET ****
+digitalRoot
+int digitalRoot(int num) {
+    while (num >= 10) {
+        int sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        num = sum;
+    }
+    return num;
+}
+
+**** TAGS ****
+
+calculate_digitalRoot 
+**** SNIPPET ****
+isodd
+bool isOdd(int num) {
+    return num % 2 != 0;
+}
+
+**** TAGS ****
+
+check_is_odd 
+**** SNIPPET ****
+factorial
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+**** TAGS ****
+
+find_factorial 
+**** SNIPPET ****
+eulerTotientFunction
+int eulerTotientFunction(int n) {
+    int result = n; // Initialize result as n
+    for (int p = 2; p * p <= n; ++p) {
+        if (n % p == 0) {
+            while (n % p == 0) {
+                n /= p;
+            }
+            result -= result / p;
+        }
+    }
+    if (n > 1) {
+        result -= result / n;
+    }
+    return result;
+}
+
+**** TAGS ****
+
+calculate_eulerTotientFunction 
+**** SNIPPET ****
+decimalToBinary
+std::string decimalToBinary(int num) {
+    std::string binary;
+    while (num > 0) {
+        binary = std::to_string(num % 2) + binary;
+        num /= 2;
+    }
+    return binary;
+}
+
+**** TAGS ****
+
+convert_decimalToBinary 
+**** SNIPPET ****
+iseven
+bool isEven(int num) {
+    return num % 2 == 0;
+}
+
+**** TAGS ****
+
+check 
+**** SNIPPET ****
+cube
+int cube(int num) {
+    return num * num * num;
+}
+
+**** TAGS ****
+
+calculate_cube_of_number 
+**** SNIPPET ****
+isPerfectCube
+bool isPerfectCube(int num) {
+    int cubeRoot = round(cbrt(num));
+    return cubeRoot * cubeRoot * cubeRoot == num;
+}
+
+**** TAGS ****
+
+isPerfectCube 
+**** SNIPPET ****
+sumOfArithmeticProgression
+int sumOfArithmeticProgression(int firstTerm, int commonDifference, int numTerms) {
+    return numTerms * (2 * firstTerm + (numTerms - 1) * commonDifference) / 2;
+}
+
+**** TAGS ****
+
+get_sumOfArithmeticProgression 
+**** SNIPPET ****
+regularHexagonPerimeter
+double regularHexagonPerimeter(double side) {
+    return 6 * side;
+}
+
+**** TAGS ****
+
+calculate_regularHexagonPerimeter 
+**** SNIPPET ****
+sumOfNaturalNumbers
+int sumOfNaturalNumbers(int n) {
+    return n * (n + 1) / 2;
+}
+
+**** TAGS ****
+
+find_sum_of_n_natural_number 
+**** SNIPPET ****
+isArmstrong
+bool isArmstrong(int num) {
+    int original = num;
+    int sum = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        sum += digit * digit * digit;
+        num /= 10;
+    }
+    return original == sum;
+}
+
+**** TAGS ****
+
+check_number_is_armstrong 
+**** SNIPPET ****
+nthPrime
+bool isPrime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+int nthPrime(int n) {
+    int count = 0;
+    int num = 2;
+    while (count < n) {
+        if (isPrime(num)) {
+            ++count;
+        }
+        ++num;
+    }
+    return num - 1;
+}
+
+**** TAGS ****
+
+find_nth_prime_number 
+**** SNIPPET ****
+squareRoot
+double squareRoot(double num) {
+    if (num < 0) {
+        return -1.0; // Invalid input for negative numbers
+    }
+    double x = num;
+    double y = 1.0;
+    double epsilon = 0.00001; // Desired precision
+    while (x - y > epsilon) {
+        x = (x + y) / 2;
+        y = num / x;
+    }
+    return x;
+}
+
+**** TAGS ****
+
+find_squareroot_of_number 
+**** SNIPPET ****
+exponentialFunction
+double exponentialFunction(double x) {
+    double result = 1.0;
+    double term = 1.0;
+    for (int i = 1; i <= 10; ++i) { // Adjust the number of terms as needed for precision
+        term *= x / i;
+        result += term;
+    }
+    return result;
+}
+
+**** TAGS ****
+
+calculate_exponential_function 
+**** SNIPPET ****
+countdigits
+int countDigits(int num) {
+    int count = 0;
+    while (num != 0) {
+        num /= 10;
+        ++count;
+    }
+    return count;
+}
+
+**** TAGS ****
+
+count_digits_in_number 
+**** SNIPPET ****
+isPalindrome
+bool isPalindrome(int num) {
+    int original = num;
+    int reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return original == reversed;
+}
+
+**** TAGS ****
+
+check_number_is_palindrome 
+**** SNIPPET ****
+absolutevalue
+int absoluteValue(int num) {
+    return num >= 0 ? num : -num;
+}
+
+**** TAGS ****
+
+get_absolutevalue 
+**** SNIPPET ****
+nth_fibonacci_number
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    int prev = 0, curr = 1;
+    for (int i = 2; i <= n; ++i) {
+        int next = prev + curr;
+        prev = curr;
+        curr = next;
+    }
+    return curr;
+}
+
+**** TAGS ****
+
+find_nth_fibonacci_number 
+**** SNIPPET ****
+isPerfectNumber
+bool isPerfectNumber(int num) {
+    int sum = 1;
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) {
+            sum += i;
+            if (i * i != num) {
+                sum += num / i;
+            }
+        }
+    }
+    return sum == num && num != 1;
+}
+
+**** TAGS ****
+
+check_isPerfectNumber 
+**** SNIPPET ****
+cylinderSurfaceArea
+double cylinderSurfaceArea(double radius, double height) {
+    const double pi = 3.14159265358979323846;
+    return 2 * pi * radius * (radius + height);
+}
+
+**** TAGS ****
+
+calculate_cylinderSurfaceArea 
+**** SNIPPET ****
+parallelogramPerimeter
+double parallelogramPerimeter(double side1, double side2) {
+    return 2 * (side1 + side2);
+}
+
+**** TAGS ****
+
+calculate_parallelogramPerimeter 
+**** SNIPPET ****
+toggle_ith_bit
+int toggleBit(int num, int i) {
+    // Left shift 1 by i positions to create a mask with only the ith bit set
+    int mask = 1 << i;
+    // Bitwise XOR operation to toggle the ith bit
+    return num ^ mask;
+}
+
+**** TAGS ****
+
+to_toggle_ith_bit 
+**** SNIPPET ****
+trianglePerimeter
+double trianglePerimeter(double side1, double side2, double side3) {
+    return side1 + side2 + side3;
+}
+
+**** TAGS ****
+
+calculate_trianglePerimeter 
+**** SNIPPET ****
+power
+double power(double base, int exponent) {
+    if (exponent == 0) {
+        return 1;
+    } else if (exponent % 2 == 0) {
+        double halfPower = power(base, exponent / 2);
+        return halfPower * halfPower;
+    } else {
+        return base * power(base, exponent - 1);
+    }
+}
+
+**** TAGS ****
+
+to_find_power_of_number 
+**** SNIPPET ****
+sumOfSquaresOfDigits
+int sumOfSquaresOfDigits(int num) {
+    int sum = 0;
+    while (num != 0) {
+        int digit = num % 10;
+        sum += digit * digit;
+        num /= 10;
+    }
+    return sum;
+}
+
+**** TAGS ****
+
+get_sumOfSquaresOfDigits 
+**** SNIPPET ****
+isHappy
+bool isHappy(int num) {
+    while (num != 1 && num != 4) {
+        int sum = 0;
+        while (num != 0) {
+            sum += (num % 10) * (num % 10);
+            num /= 10;
+        }
+        num = sum;
+    }
+    return num == 1;
+}
+
+**** TAGS ****
+
+check_is_number_happy 
