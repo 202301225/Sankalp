@@ -42,6 +42,8 @@ int main()
         cout << YELLOW << "Enter 5 for Search by Tag" << RESET << endl;
         cout << YELLOW << "Enter 6 for Edit Snippet" << RESET << endl;
         cout << YELLOW << "Enter 7 for Remove Snippet" << RESET << endl;
+        cout << YELLOW << "Enter 8 for Exit" << RESET << endl;
+
         int choice;
         cout << "\n" << BOLD_RED << "Enter your choice (1-8): " << RESET;
 
@@ -176,9 +178,21 @@ int main()
 
             break;
         }
+        case 8:
+        {
+            cout << endl << BOLD_GREEN << "Exit From Snippet Manager! Goodbye!" << RESET << endl;
+              cout<< endl;
+            
+            return 0;
+        }
+
+        default:
+
+            cout << "Invalid choice. Please enter a number between 1 and 8" << endl;
+
+        }
         
         }
-    }
 
     return 0;
 }
