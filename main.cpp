@@ -37,6 +37,7 @@ int main()
         cout << "--------------------------------" << endl;
         cout << YELLOW << "Enter 1 for Add Snippet" << RESET << endl;
         cout << YELLOW << "Enter 2 for Get Snippet" << RESET << endl;
+        cout << YELLOW << "Enter 3 for List Snippets" << RESET << endl;
         int choice;
         cout << "\n" << BOLD_RED << "Enter your choice (1-8): " << RESET;
 
@@ -91,6 +92,10 @@ int main()
             cout << "------------------------------------------------------------" << endl;
             break;
         }
+         case 3:
+            snippetManager.listSnippets();
+            cout << "------------------------------------------------------------" << endl;
+            break;
         }
     }
 
