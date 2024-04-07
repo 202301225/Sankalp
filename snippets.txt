@@ -3071,4 +3071,1796 @@ void fill2DArrayRandom(int arr[][3], int rows, int cols) {
 **** TAGS ****
 
 fill2DArrayRandom 
+**** SNIPPET ****
+stackpeek
+peek() const {
+        if (isEmpty()) {
+            std::cout << "Stack is empty!" << std::endl;
+            throw std::runtime_error("Stack is empty");
+        }
+        return elements[top];
+    }
+
+
+**** TAGS ****
+
+peek function in stack 
+**** SNIPPET ****
+stacksearch
+int search(const T& item) const {
+        for (int i = top; i >= 0; --i) {
+            if (elements[i] == item) {
+                return top - i + 1;
+            }
+        }
+        return -1; // Element not found
+    }
+
+
+**** TAGS ****
+
+search function of stack 
+**** SNIPPET ****
+stackisempty
+bool isEmpty() const {
+        return top == -1;
+    }
+
+
+**** TAGS ****
+
+is empty function of stack 
+**** SNIPPET ****
+stacksize
+int size() const {
+        return top + 1;
+    }
+
+
+**** TAGS ****
+
+size function of stack 
+**** SNIPPET ****
+stackpush
+void push(const T& item) {
+        if (top == capacity - 1) {
+            std::cout << "Stack overflow!" << std::endl;
+            return;
+        }
+        elements[++top] = item;
+    }
+
+
+**** TAGS ****
+
+pushfunction in stack 
+**** SNIPPET ****
+stackcopy
+Stack<T> copy() const {
+        Stack<T> newStack(capacity);
+        for (int i = 0; i <= top; ++i) {
+            newStack.push(elements[i]);
+        }
+        return newStack;
+    }
+
+
+**** TAGS ****
+
+copy function of stack 
+**** SNIPPET ****
+stackpop
+pop() {
+        if (isEmpty()) {
+            std::cout << "Stack underflow!" << std::endl;
+            throw std::runtime_error("Stack underflow");
+        }
+        return elements[top--];
+    } 
+
+
+**** TAGS ****
+
+push function in stack 
+**** SNIPPET ****
+stackreverse
+ void reverse() {
+        Stack<T> tempStack(capacity);
+        while (!isEmpty()) {
+            tempStack.push(pop());
+        }
+        *this = tempStack;
+    }
+
+
+**** TAGS ****
+
+reverse function of stack 
+**** SNIPPET ****
+stackmerge
+void merge(Stack<T>& otherStack) {
+        while (!otherStack.isEmpty()) {
+            push(otherStack.pop());
+        }
+    }
+
+
+**** TAGS ****
+
+merge function of stack
+**** SNIPPET ****
+stackswap
+void swap(Stack<T>& first, Stack<T>& second) {
+        using std::swap;
+        swap(first.elements, second.elements);
+        swap(first.capacity, second.capacity);
+        swap(first.top, second.top);
+    }
+
+
+**** TAGS ****
+
+merge function of stack
+**** SNIPPET ****
+stackrotate
+ void rotate(int positions) {
+        if (!isEmpty()) {
+            positions %= size();
+            std::rotate(elements, elements + top - positions + 1, elements + top + 1);
+        }
+    }
+
+
+**** TAGS ****
+
+merge function of stack
+**** SNIPPET ****
+stackminimum
+T getMinimum() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Stack is empty");
+        }
+        T minElement = elements[0];
+        for (int i = 1; i <= top; ++i) {
+            if (elements[i] < minElement) {
+                minElement = elements[i];
+            }
+        }
+        return minElement;
+    }
+
+
+**** TAGS ****
+
+minimum function of stack
+**** SNIPPET ****
+stackmaximum
+T getMaximum() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Stack is empty");
+        }
+        T maxElement = elements[0];
+        for (int i = 1; i <= top; ++i) {
+            if (elements[i] > maxElement) {
+                maxElement = elements[i];
+            }
+        }
+        return maxElement;
+    }
+
+
+**** TAGS ****
+
+maximum function of stack
+**** SNIPPET ****
+stacksort
+void sort() {
+        std::sort(elements, elements + top + 1);
+    }
+
+
+**** TAGS ****
+
+sort function of stack
+**** SNIPPET ****
+stackcontain
+bool contains(const T& item) const {
+        for (int i = 0; i <= top; ++i) {
+            if (elements[i] == item) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+**** TAGS ****
+
+contain function of stack
+**** SNIPPET ****
+stackcount
+int count(const T& item) const {
+        int count = 0;
+        for (int i = 0; i <= top; ++i) {
+            if (elements[i] == item) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+**** TAGS ****
+
+count function of stack
+**** SNIPPET ****
+stackmergesort
+void mergeSorted(Stack<T>& otherStack) {
+        if (isEmpty()) {
+            *this = otherStack;
+        } else {
+            Stack<T> mergedStack(size() + otherStack.size());
+            while (!isEmpty() && !otherStack.isEmpty()) {
+                if (peek() < otherStack.peek()) {
+                    mergedStack.push(pop());
+                } else {
+                    mergedStack.push(otherStack.pop());
+                }
+            }
+            while (!isEmpty()) {
+                mergedStack.push(pop());
+            }
+            while (!otherStack.isEmpty()) {
+                mergedStack.push(otherStack.pop());
+            }
+            *this = mergedStack;
+        }
+    }
+
+    
+**** TAGS ****
+
+mergesortfunction of stack
+**** SNIPPET ****
+stackinterleave
+void interleave(Stack<T>& otherStack) {
+        Stack<T> tempStack(size() + otherStack.size());
+        while (!isEmpty() && !otherStack.isEmpty()) {
+            tempStack.push(pop());
+            tempStack.push(otherStack.pop());
+        }
+        while (!isEmpty()) {
+            tempStack.push(pop());
+        }
+        while (!otherStack.isEmpty()) {
+            tempStack.push(otherStack.pop());
+        }
+        tempStack.reverse();
+        *this = tempStack;
+    }
+
+
+**** TAGS ****
+
+interleave function of stack
+**** SNIPPET ****
+stacksum
+T sum() const {
+    T result = 0;
+    for (int i = 0; i <= top; ++i) {
+        result += elements[i];
+    }
+    return result;
+}
+
+
+**** TAGS ****
+
+sum function of stack
+**** SNIPPET ****
+stackproduct
+T product() const {
+    T result = 1;
+    for (int i = 0; i <= top; ++i) {
+        result *= elements[i];
+    }
+    return result;
+}
+
+
+**** TAGS ****
+
+product function of stack
+**** SNIPPET ****
+stackclearuntil
+void clearUntil(const T& item) {
+    while (!isEmpty() && peek() != item) {
+        pop();
+    }
+    if (!isEmpty()) {
+        pop(); // Remove the specified element
+    }
+}
+
+
+**** TAGS ****
+
+clearuntil function of stack
+**** SNIPPET ****
+stackcduplicatenth
+void duplicateNth(int n) {
+    T element = elements[top - n + 1];
+    push(element);
+}
+
+
+**** TAGS ****
+
+clearduplicatenth function of stack
+**** SNIPPET ****
+stackremoveduplicate
+void removeDuplicates() {
+    Stack<T> tempStack(capacity);
+    while (!isEmpty()) {
+        T current = pop();
+        if (!tempStack.contains(current)) {
+            tempStack.push(current);
+        }
+    }
+    while (!tempStack.isEmpty()) {
+        push(tempStack.pop());
+    }
+}
+
+
+**** TAGS ****
+
+removeduplicates function of stack
+**** SNIPPET ****
+stackgetmedian
+T getMedian() const {
+    if (isEmpty()) {
+        throw std::runtime_error("Stack is empty");
+    }
+    Stack<T> sortedStack = *this;
+    sortedStack.sort();
+    int size = sortedStack.size();
+    if (size % 2 == 0) {
+        return (sortedStack.elements[size / 2] + sortedStack.elements[size / 2 - 1]) / 2;
+    } else {
+        return sortedStack.elements[size / 2];
+    }
+}
+
+
+**** TAGS ****
+
+getmedian function of stack
+**** SNIPPET ****
+stackgetmode
+T getMode() const {
+    if (isEmpty()) {
+        throw std::runtime_error("Stack is empty");
+    }
+    int maxFrequency = 0;
+    T mode;
+    for (int i = 0; i <= top; ++i) {
+        int frequency = count(elements[i]);
+        if (frequency > maxFrequency) {
+            maxFrequency = frequency;
+            mode = elements[i];
+        }
+    }
+    return mode;
+}
+
+
+**** TAGS ****
+
+getmode function of stack
+**** SNIPPET ****
+stacktruefalse
+std::pair<Stack<T>, Stack<T>> partition(std::function<bool(const T&)> predicate) {
+    Stack<T> trueStack(capacity);
+    Stack<T> falseStack(capacity);
+    while (!isEmpty()) {
+        T current = pop();
+        if (predicate(current)) {
+            trueStack.push(current);
+        } else {
+            falseStack.push(current);
+        }
+    }
+    return { trueStack, falseStack };
+}
+
+
+**** TAGS ****
+
+gettruefalse function of stack
+**** SNIPPET ****
+stackrotateleft
+void rotateLeft() {
+    if (!isEmpty()) {
+        T temp = pop();
+        rotate(1);
+        push(temp);
+    }
+}
+
+
+**** TAGS ****
+
+rotateleft function of stack
+**** SNIPPET ****
+stackrotateright
+void rotateRight() {
+    if (!isEmpty()) {
+        T temp = elements[top];
+        rotate(-1);
+        elements[0] = temp;
+    }
+}
+
+
+**** TAGS ****
+
+rotateright function of stack
+**** SNIPPET ****
+stackshuffle
+void shuffle() {
+    std::random_shuffle(elements, elements + top + 1);
+}
+
+
+**** TAGS ****
+
+shuffle function of stack
+**** SNIPPET ****
+stackgetelementat
+T getElementAt(int index) const {
+    if (index < 0 || index > top) {
+        throw std::out_of_range("Index out of range");
+    }
+    return elements[index];
+}
+
+
+**** TAGS ****
+
+getelementat function of stack
+**** SNIPPET ****
+stackgetfrequency
+int getFrequency(const T& item) const {
+    int frequency = 0;
+    for (int i = 0; i <= top; ++i) {
+        if (elements[i] == item) {
+            frequency++;
+        }
+    }
+    return frequency;
+}
+
+
+**** TAGS ****
+
+getfrequency function of stack
+**** SNIPPET ****
+infixtopostfix
+string infixToPostfix(const string& expression) {
+    string postfix = "";
+    stack<char> operatorStack;
+
+    unordered_map<char, int> precedenceMap;
+    precedenceMap['+'] = precedence('-');
+    precedenceMap['-'] = precedence('+');
+    precedenceMap['*'] = precedence('/');
+    precedenceMap['/'] = precedence('*');
+    precedenceMap['^'] = precedence('^');
+
+    for (char c : expression) {
+        if (isalnum(c)) {  // Operand
+            postfix += c;
+        } else if (c == '(') {
+            operatorStack.push(c);
+        } else if (c == ')') {
+            while (!operatorStack.empty() && operatorStack.top() != '(') {
+                postfix += operatorStack.top();
+                operatorStack.pop();
+            }
+            operatorStack.pop();  // Discard the '('
+        } else if (isOperator(c)) {
+            while (!operatorStack.empty() && precedenceMap[c] <= precedenceMap[operatorStack.top()]) {
+                postfix += operatorStack.top();
+                operatorStack.pop();
+            }
+            operatorStack.push(c);
+        }
+    }
+
+    // Append remaining operators in the stack to postfix
+    while (!operatorStack.empty()) {
+        postfix += operatorStack.top();
+        operatorStack.pop();
+    }
+
+    return postfix;
+}
+
+
+**** TAGS ****
+
+infixtopostfix function of stack
+**** SNIPPET ****
+infixtoprefix
+string infixToPrefix(const string& expression) {
+    string prefix = "";
+    stack<char> operatorStack;
+
+    unordered_map<char, int> precedenceMap;
+    precedenceMap['+'] = precedence('-');
+    precedenceMap['-'] = precedence('+');
+    precedenceMap['*'] = precedence('/');
+    precedenceMap['/'] = precedence('*');
+    precedenceMap['^'] = precedence('^');
+
+    for (int i = expression.size() - 1; i >= 0; i--) {
+        char c = expression[i];
+        if (isalnum(c)) {  // Operand
+            prefix = c + prefix;
+        } else if (c == ')') {
+            operatorStack.push(c);
+        } else if (c == '(') {
+            while (!operatorStack.empty() && operatorStack.top() != ')') {
+                prefix = operatorStack.top() + prefix;
+                operatorStack.pop();
+            }
+            operatorStack.pop();  // Discard the ')'
+        } else if (isOperator(c)) {
+            while (!operatorStack.empty() && precedenceMap[c] < precedenceMap[operatorStack.top()]) {
+                prefix = operatorStack.top() + prefix;
+                operatorStack.pop();
+            }
+            operatorStack.push(c);
+        }
+    }
+    // Append remaining operators in the stack to prefix
+    while (!operatorStack.empty()) {
+        prefix = operatorStack.top() + prefix;
+        operatorStack.pop();
+    }
+    return prefix;
+}
+
+
+**** TAGS ****
+
+infixtoprefix function of stack
+**** SNIPPET ****
+validparentheses
+bool isValidParentheses(std::string s) {
+    std::stack<char> stack;
+    std::unordered_map<char, char> mapping = {{')', '('}, {']', '['}, {'}', '{'}};
+
+    for (char c : s) {
+        if (mapping.find(c) != mapping.end()) {
+            char topElement = stack.empty() ? '#' : stack.top();
+            if (topElement != mapping[c]) {
+                return false;
+            }
+            stack.pop();
+        } else {
+            stack.push(c);
+        }
+    }
+    return stack.empty();
+}
+
+
+**** TAGS ****
+
+validparentheses function of stack
+**** SNIPPET ****
+evalRPN
+int evalRPN(std::vector<std::string>& tokens) {
+    std::stack<int> stack;
+
+    for (const std::string& token : tokens) {
+        if (token == "+" || token == "-" || token == "*" || token == "/") {
+            int b = stack.top();
+            stack.pop();
+            int a = stack.top();
+            stack.pop();
+            if (token == "+") stack.push(a + b);
+            else if (token == "-") stack.push(a - b);
+            else if (token == "*") stack.push(a * b);
+            else stack.push(a / b);
+        } else {
+            stack.push(std::stoi(token));
+        }
+    }
+    return stack.top();
+}
+
+
+**** TAGS ****
+
+evalRPN function of stack
+**** SNIPPET ****
+nextgreaterelement
+std::vector<int> nextGreaterElement(std::vector<int>& nums) {
+    std::vector<int> result(nums.size(), -1);
+    std::stack<int> stack;
+
+    for (int i = 0; i < nums.size(); ++i) {
+        while (!stack.empty() && nums[i] > nums[stack.top()]) {
+            result[stack.top()] = nums[i];
+            stack.pop();
+        }
+        stack.push(i);
+    }
+
+    return result;
+}
+
+
+**** TAGS ****
+
+nextgreaterelement function of stack
+**** SNIPPET ****
+simplifypath
+std::string simplifyPath(std::string path) {
+    std::stringstream ss(path);
+    std::string token;
+    std::stack<std::string> stack;
+    while (getline(ss, token, '/')) {
+        if (token == "" || token == ".") {
+            continue;
+        } else if (token == "..") {
+            if (!stack.empty()) {
+                stack.pop();
+            }
+        } else {
+            stack.push(token);
+        }
+    }
+    std::vector<std::string> vec;
+    while (!stack.empty()) {
+        vec.push_back(stack.top());
+        stack.pop();
+    }
+    std::string result = "";
+    for (int i = vec.size() - 1; i >= 0; --i) {
+        result += "/" + vec[i];
+    }
+    return result.empty() ? "/" : result;
+}
+
+
+**** TAGS ****
+
+simplifypath function of stack
+**** SNIPPET ****
+decodestring
+std::string decodeString(std::string s) {
+    std::stack<int> countStack;
+    std::stack<std::string> stringStack;
+    std::string currentString = "";
+    int count = 0;
+    for (char c : s) {
+        if (isdigit(c)) {
+            count = count * 10 + (c - '0');
+        } else if (isalpha(c)) {
+            currentString += c;
+        } else if (c == '[') {
+            countStack.push(count);
+            stringStack.push(currentString);
+            currentString = "";
+            count = 0;
+        } else if (c == ']') {
+            int repeatTimes = countStack.top();
+            countStack.pop();
+            std::string tmp = "";
+            for (int i = 0; i < repeatTimes; ++i) {
+                tmp += currentString;
+            }
+            currentString = stringStack.top() + tmp;
+            stringStack.pop();
+        }
+    }
+    return currentString;
+}
+
+
+**** TAGS ****
+
+decodestring function of stack
+**** SNIPPET ****
+inordertraversal
+std::vector<int> inorderTraversal(TreeNode* root) {
+    std::vector<int> result;
+    std::stack<TreeNode*> stack;
+    TreeNode* current = root;
+    while (current != nullptr || !stack.empty()) {
+        while (current != nullptr) {
+            stack.push(current);
+            current = current->left;
+        }
+        current = stack.top();
+        stack.pop();
+        result.push_back(current->val);
+        current = current->right;
+    }
+    return result;
+}
+
+
+**** TAGS ****
+
+inordertraversal function of stack
+**** SNIPPET ****
+towerofhanoi
+void towerOfHanoi(int n)
+{
+    cout << "Tower of Hanoi for " << n << " disks:\n";
+ 
+    int src = 0, aux = 1, dest = 2;
+    for (int i = n; i > 0; i--)
+        stacks[src].push(i);
+ 
+    int totalMoves = (1 << n) - 1;
+    if (n % 2 == 0)
+        swap(aux, dest);
+ 
+    for (int i = 1; i <= totalMoves; i++)
+    {
+        if (i % 3 == 0)
+            moveDisk(aux, dest);
+        else if (i % 3 == 1)
+            moveDisk(src, dest);
+        else
+            moveDisk(src, aux);
+    }
+}
+
+
+**** TAGS ****
+
+towerofhanoi function of stack
+**** SNIPPET ****
+getmaxarea 
+int getMaxArea(int hist[], int n) 
+{ 
+    stack<int> s; 
+    int max_area = 0;
+    int tp;
+    int area_with_top;
+
+    int i = 0; 
+    while (i < n) { 
+        if (s.empty() || hist[s.top()] <= hist[i]) 
+            s.push(i++); 
+        else { 
+            tp = s.top(); 
+            s.pop(); 
+            area_with_top = hist[tp] * (s.empty() ? i : i - s.top() - 1); 
+            if (max_area < area_with_top) 
+                max_area = area_with_top; 
+        } 
+    } 
+
+    while (s.empty() == false) { 
+        tp = s.top(); 
+        s.pop(); 
+        area_with_top = hist[tp] * (s.empty() ? i : i - s.top() - 1); 
+        if (max_area < area_with_top) 
+            max_area = area_with_top; 
+    } 
+
+    return max_area; 
+}
+
+
+**** TAGS ****
+
+getmaxarea function of stack
+**** SNIPPET ****
+removeconsecutiveSame
+int removeConsecutiveSame(vector<string> v) 
+{ 
+    int n = v.size(); 
+  
+    for (int i = 0; i < n - 1; ) 
+    { 
+        if (v[i].compare(v[i+1]) == 0) 
+        { 
+            v.erase(v.begin() + i); 
+            v.erase(v.begin() + i); 
+            if (i > 0) 
+                i--; 
+            n = n - 2; 
+        } 
+        else
+            i++; 
+    } 
+    return v.size(); 
+}
+
+
+**** TAGS ****
+
+removeconsecutiveSame function of stack
+**** SNIPPET ****
+celebrity
+int celebrity(vector<vector<int>>& M, int n){
+    vector<int> adj[n + 1];
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(M[i][j] == 1){
+                adj[i].push_back(j);
+            }
+        }
+    }
+    vector<int>::iterator it;
+    for(int i = 0; i < n; i++){
+        if(adj[i].empty()){
+            bool flag = true;
+            for(int j = 0; j < n; j++){
+                if(i == j) continue;
+                it = find(adj[j].begin(), adj[j].end(), i);
+                if(it == adj[j].end()){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag) return i;
+        }
+    }
+    return -1;
+}
+
+
+**** TAGS ****
+
+celebrity function of stack
+**** SNIPPET ****
+next_greater
+void next_greater(int arr[], int query[], int n, int q) {
+    for (int i = 0; i < q; i++) {
+        int k = query[i];
+        bool val = false;
+        for (int j = k + 1; j < n; j++) {
+            if (arr[j] > arr[k]) {
+                cout << arr[j] << " ";
+                val = true;
+                break;
+            }
+        }
+        if (val == false) {
+            cout << -1 << " ";    
+        }
+    }
+}
+
+
+**** TAGS ****
+
+next_greater function of stack
+**** SNIPPET ****
+postorderiterative
+vector<int> postOrderIterative(struct Node* root) {
+    vector<int> postOrderList;
+    if (root == NULL)
+        return postOrderList;
+    stack<Node*> S;
+    S.push(root);
+    Node* prev = NULL;
+    while (!S.empty()) {
+        auto current = S.top();
+        if (prev == NULL || prev->left == current || prev->right == current) {
+            if (current->left)
+                S.push(current->left);
+            else if (current->right)
+                S.push(current->right);
+            else {
+                S.pop();
+                postOrderList.push_back(current->data);
+            }
+        } else if (current->left == prev) {
+            if (current->right)
+                S.push(current->right);
+            else {
+                S.pop();
+                postOrderList.push_back(current->data);
+            }
+        } else if (current->right == prev) {
+            S.pop();
+            postOrderList.push_back(current->data);
+        }
+        prev = current;
+    }
+    return postOrderList;
+}
+
+
+**** TAGS ****
+
+postorderiterative function of stack
+**** SNIPPET ****
+findmaxlen
+int findMaxLen(string str) {
+    int n = str.length();
+    stack<int> stk;
+    for (int i = 0; i < n; i++) {
+        if (str[i] == '(')
+            stk.push(i);
+        else {
+            if (!stk.empty() && str[stk.top()] == '(')
+                stk.pop();
+            else
+                stk.push(i);
+        }
+    }
+
+    int result = 0, last = n;
+    while (!stk.empty()) {
+        int now = stk.top();
+        stk.pop();
+        result = max(result, last - now - 1);
+        last = now;
+    }
+
+    return max(result, last);
+}
+
+
+**** TAGS ****
+
+findmaxlen function of stack
+**** SNIPPET ****
+emoveInvalidParenthesis
+void removeInvalidParenthesis(string str) {
+    if (str.empty())
+        return;
+ 
+    unordered_set<string> visit;
+    queue<string> q;
+    string temp;
+    bool level;
+ 
+    q.push(str);
+    visit.insert(str);
+    while (!q.empty()) {
+        str = q.front();  
+        q.pop();
+        if (isValidString(str)) {
+            cout << str << endl;
+            level = true;
+        }
+        if (level)
+            continue;
+        for (int i = 0; i < str.length(); i++) {
+            if (!isParenthesis(str[i]))
+                continue;
+            temp = str.substr(0, i) + str.substr(i + 1);
+            if (visit.find(temp) == visit.end()) {
+                q.push(temp);
+                visit.insert(temp);
+            }
+        }
+    }
+}
+
+
+**** TAGS ****
+
+removeInvalidParenthesis function of stack
+**** SNIPPET ****
+noofaassignments
+int noOfAssignments(string& S, int& n, int i,
+                    int c_x, int c_y)
+{
+    if (F[i][c_x][c_y] != -1)
+        return F[i][c_x][c_y];
+    if (i == n) {
+        F[i][c_x][c_y] = !c_x && !c_y;
+        return F[i][c_x][c_y];
+    }
+    if (S[i] == '(') {
+        F[i][c_x][c_y]
+            = noOfAssignments(S, n, i + 1,
+                              c_x + 1, c_y)
+              + noOfAssignments(S, n, i + 1,
+                                c_x, c_y + 1);
+        return F[i][c_x][c_y];
+    }
+    F[i][c_x][c_y] = 0;
+    if (c_x)
+        F[i][c_x][c_y]
+            += noOfAssignments(S, n, i + 1,
+                               c_x - 1, c_y);
+    if (c_y)
+        F[i][c_x][c_y]
+            += noOfAssignments(S, n, i + 1,
+                               c_x, c_y - 1);
+     return F[i][c_x][c_y];
+}
+
+
+**** TAGS ****
+
+noofaassignments function of stack
+**** SNIPPET ****
+enqueue
+void enqueue(const T& item) {
+        elements.push(item);
+    }
+
+
+**** TAGS ****
+
+enqueue function of queue
+**** SNIPPET ****
+dequeue
+T dequeue() {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        T frontElement = elements.front();
+        elements.pop();
+        return frontElement;
+    }
+
+
+**** TAGS ****
+
+dequeue function of queue
+**** SNIPPET ****
+queueconst
+T front() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        return elements.front();
+    }
+
+
+**** TAGS ****
+
+const function of queue
+**** SNIPPET ****
+queueisempty
+bool isEmpty() const {
+        return elements.empty();
+    }
+
+
+**** TAGS ****
+
+isempty function of queue
+**** SNIPPET ****
+queuesize
+int size() const {
+        return elements.size();
+    }
+
+
+**** TAGS ****
+
+size function of queue
+**** SNIPPET ****
+queueclear
+void clear() {
+        while (!isEmpty()) {
+            elements.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+clear function of queue
+**** SNIPPET ****
+queuepeek
+T peek() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        return elements.front();
+    }
+
+
+**** TAGS ****
+
+peek function of queue
+**** SNIPPET ****
+queuecontains
+bool contains(const T& item) const {
+        for (auto& element : elements) {
+            if (element == item) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+**** TAGS ****
+
+peek function of queue
+**** SNIPPET ****
+queuecopy
+Queue<T> copy() const {
+        Queue<T> copyQueue;
+        for (auto& element : elements) {
+            copyQueue.enqueue(element);
+        }
+        return copyQueue;
+    }
+
+
+**** TAGS ****
+
+copy function of queue
+**** SNIPPET ****
+queuereverse
+void reverse() {
+        std::queue<T> reversedQueue;
+        while (!isEmpty()) {
+            reversedQueue.push(front());
+            elements.pop();
+        }
+        elements = reversedQueue;
+    }
+
+
+**** TAGS ****
+
+reverse function of queue
+**** SNIPPET ****
+queuemerge
+void merge(Queue<T>& otherQueue) {
+        while (!otherQueue.isEmpty()) {
+            enqueue(otherQueue.dequeue());
+        }
+    }
+
+
+**** TAGS ****
+
+merge function of queue
+**** SNIPPET ****
+queuesplit
+std::pair<Queue<T>, Queue<T>> split(int index) {
+        Queue<T> firstQueue;
+        Queue<T> secondQueue;
+        int count = 0;
+        while (!isEmpty()) {
+            if (count < index) {
+                firstQueue.enqueue(dequeue());
+            } else {
+                secondQueue.enqueue(dequeue());
+            }
+            count++;
+        }
+        return { firstQueue, secondQueue };
+    }
+
+
+**** TAGS ****
+
+split function of queue
+**** SNIPPET ****
+queueelementat
+T getElementAt(int index) const {
+        if (index < 0 || index >= size()) {
+            throw std::out_of_range("Index out of range");
+        }
+        std::queue<T> tempQueue = elements;
+        for (int i = 0; i < index; ++i) {
+            tempQueue.pop();
+        }
+        return tempQueue.front();
+    }
+
+
+**** TAGS ****
+
+elementat function of queue
+**** SNIPPET ****
+queuegetfrequency
+int getFrequency(const T& item) const {
+        int frequency = 0;
+        std::queue<T> tempQueue = elements;
+        while (!tempQueue.empty()) {
+            if (tempQueue.front() == item) {
+                frequency++;
+            }
+            tempQueue.pop();
+        }
+        return frequency;
+    }
+
+
+**** TAGS ****
+
+getfrequency function of queue
+**** SNIPPET ****
+queuerotate
+void rotate(int positions) {
+        positions %= size();
+        if (positions < 0) {
+            positions += size();
+        }
+        for (int i = 0; i < positions; ++i) {
+            T frontElement = dequeue();
+            enqueue(frontElement);
+        }
+    }
+
+
+**** TAGS ****
+
+rotate function of queue
+**** SNIPPET ****
+queueswap
+void swap(Queue<T>& otherQueue) {
+        std::swap(elements, otherQueue.elements);
+    }
+
+
+**** TAGS ****
+
+swap function of queue
+**** SNIPPET ****
+queueisfull
+bool isFull() const {
+        return size() == capacity;
+    }
+
+
+**** TAGS ****
+
+isfull function of queue
+**** SNIPPET ****
+queuegetcapacity
+int getCapacity() const {
+        return capacity;
+    }
+
+
+**** TAGS ****
+
+getcapacity function of queue
+**** SNIPPET ****
+queueresize
+void resize(int newCapacity) {
+        capacity = newCapacity;
+    }
+
+
+**** TAGS ****
+
+resize function of queue
+**** SNIPPET ****
+queuestringtostring
+std::string toString() const {
+        std::ostringstream oss;
+        oss << "[";
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            oss << temp.front();
+            temp.pop();
+            if (!temp.empty()) {
+                oss << ", ";
+            }
+        }
+        oss << "]";
+        return oss.str();
+    }
+
+
+**** TAGS ****
+
+stringtostring function of queue
+**** SNIPPET ****
+queueclone
+Queue<T> clone() const {
+        Queue<T> copyQueue;
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            copyQueue.enqueue(temp.front());
+            temp.pop();
+        }
+        return copyQueue;
+    }
+
+
+**** TAGS ****
+
+clone function of queue
+**** SNIPPET ****
+queueequal
+bool equals(const Queue<T>& otherQueue) const {
+        return elements == otherQueue.elements;
+    }
+
+
+**** TAGS ****
+
+equal function of queue
+**** SNIPPET ****
+queueinsertat
+void insertAt(int index, const T& item) {
+        if (index < 0 || index > size()) {
+            throw std::out_of_range("Index out of range");
+        }
+        std::queue<T> temp;
+        while (!isEmpty()) {
+            temp.push(dequeue());
+        }
+        for (int i = 0; i < index; ++i) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+        enqueue(item);
+        while (!temp.empty()) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+ensertat function of queue
+**** SNIPPET ****
+queueremoveat
+void removeAt(int index) {
+        if (index < 0 || index >= size()) {
+            throw std::out_of_range("Index out of range");
+        }
+        std::queue<T> temp;
+        while (!isEmpty()) {
+            temp.push(dequeue());
+        }
+        for (int i = 0; i < index; ++i) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+        temp.pop();
+        while (!temp.empty()) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+removeat function of queue
+**** SNIPPET ****
+queuesort
+void sort() {
+        std::vector<T> sortedElements;
+        while (!isEmpty()) {
+            sortedElements.push_back(dequeue());
+        }
+        std::sort(sortedElements.begin(), sortedElements.end());
+        for (const auto& elem : sortedElements) {
+            enqueue(elem);
+        }
+    }
+
+
+**** TAGS ****
+
+sort function of queue
+**** SNIPPET ****
+queuegetminimum
+T getMinimum() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        T minElement = front();
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            minElement = std::min(minElement, temp.front());
+            temp.pop();
+        }
+        return minElement;
+    }
+
+
+**** TAGS ****
+
+getminimum function of queue
+**** SNIPPET ****
+queuegetmaximum
+T getMaximum() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        T maxElement = front();
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            maxElement = std::max(maxElement, temp.front());
+            temp.pop();
+        }
+        return maxElement;
+    }
+
+
+**** TAGS ****
+
+getmaximum function of queue
+**** SNIPPET ****
+queueinterleave
+void interleave(Queue<T>& otherQueue) {
+        Queue<T> interleavedQueue;
+        while (!isEmpty() || !otherQueue.isEmpty()) {
+            if (!isEmpty()) {
+                interleavedQueue.enqueue(dequeue());
+            }
+            if (!otherQueue.isEmpty()) {
+                interleavedQueue.enqueue(otherQueue.dequeue());
+            }
+        }
+        *this = interleavedQueue;
+    }
+
+
+**** TAGS ****
+
+interleave function of queue
+**** SNIPPET ****
+queueremovelast
+void removeLast() {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        std::queue<T> temp;
+        while (size() > 1) {
+            temp.push(dequeue());
+        }
+        dequeue();
+        while (!temp.empty()) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+removelast function of queue
+**** SNIPPET ****
+queuegetlast
+T getLast() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        std::queue<T> temp = elements;
+        T lastElement;
+        while (!temp.empty()) {
+            lastElement = temp.front();
+            temp.pop();
+        }
+        return lastElement;
+    }
+
+
+**** TAGS ****
+
+getlast function of queue
+**** SNIPPET ****
+queuecontainsall
+bool containsAll(const Queue<T>& otherQueue) const {
+        std::queue<T> temp = otherQueue.elements;
+        while (!temp.empty()) {
+            if (!contains(temp.front())) {
+                return false;
+            }
+            temp.pop();
+        }
+        return true;
+    }
+
+
+**** TAGS ****
+
+containsall function of queue
+**** SNIPPET ****
+queuemergesort
+void mergeSorted(Queue<T>& q1, Queue<T>& q2) {
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            if (q1.front() < q2.front()) {
+                enqueue(q1.dequeue());
+            } else {
+                enqueue(q2.dequeue());
+            }
+        }
+        while (!q1.isEmpty()) {
+            enqueue(q1.dequeue());
+        }
+        while (!q2.isEmpty()) {
+            enqueue(q2.dequeue());
+        }
+    }
+
+
+**** TAGS ****
+
+mergesort function of queue
+**** SNIPPET ****
+queuegetmedian
+T getMedian() const {
+        Queue<T> temp = *this;
+        int size = temp.size();
+        for (int i = 0; i < size / 2; ++i) {
+            temp.dequeue();
+        }
+        if (size % 2 == 0) {
+            return (temp.dequeue() + temp.front()) / 2;
+        } else {
+            return temp.dequeue();
+        }
+    }
+
+
+**** TAGS ****
+
+getmedian function of queue
+**** SNIPPET ****
+queuegetmode
+T getMode() const {
+        std::unordered_map<T, int> freqMap;
+        while (!isEmpty()) {
+            freqMap[front()]++;
+            dequeue();
+        }
+        int maxFreq = 0;
+        T mode;
+        for (const auto& pair : freqMap) {
+            if (pair.second > maxFreq) {
+                maxFreq = pair.second;
+                mode = pair.first;
+            }
+        }
+        return mode;
+    }
+
+
+**** TAGS ****
+
+getmode function of queue
+**** SNIPPET ****
+queuepartition
+std::pair<Queue<T>, Queue<T>> partition(std::function<bool(const T&)> predicate) {
+        Queue<T> trueQueue, falseQueue;
+        while (!isEmpty()) {
+            if (predicate(front())) {
+                trueQueue.enqueue(dequeue());
+            } else {
+                falseQueue.enqueue(dequeue());
+            }
+        }
+        return { trueQueue, falseQueue };
+    }
+
+
+**** TAGS ****
+
+partition function of queue
+**** SNIPPET ****
+queuerotateleft
+void rotateLeft() {
+        enqueue(dequeue());
+    }
+
+
+**** TAGS ****
+
+rotateleft function of queue
+**** SNIPPET ****
+queuerotateright
+void rotateRight() {
+        std::queue<T> temp;
+        temp.push(back());
+        dequeue();
+        while (!isEmpty()) {
+            temp.push(front());
+            dequeue();
+        }
+        while (!temp.empty()) {
+            enqueue(temp.front());
+            temp.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+rotateright function of queue
+**** SNIPPET ****
+queueshuffle
+void shuffle() {
+        std::vector<T> temp;
+        while (!isEmpty()) {
+            temp.push_back(front());
+            dequeue();
+        }
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(temp.begin(), temp.end(), g);
+        for (const auto& elem : temp) {
+            enqueue(elem);
+        }
+    }
+
+
+**** TAGS ****
+
+shuffle function of queue
+**** SNIPPET ****
+queuegetfrequency2
+int getFrequency(const T& item) const {
+        int frequency = 0;
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            if (temp.front() == item) {
+                frequency++;
+            }
+            temp.pop();
+        }
+        return frequency;
+    }
+
+
+**** TAGS ****
+
+getfrequency2 function of queue
+**** SNIPPET ****
+queueremoveduplicate
+void removeDuplicates() {
+        std::unordered_set<T> seen;
+        std::queue<T> temp;
+        while (!isEmpty()) {
+            if (seen.insert(front()).second) {
+                temp.push(front());
+            }
+            dequeue();
+        }
+        elements = temp;
+    }
+
+
+**** TAGS ****
+
+removeduplicates function of queue
+**** SNIPPET ****
+queuegetsubqueue
+Queue<T> getSubQueue(int startIndex, int endIndex) const {
+        if (startIndex < 0 || endIndex >= size() || startIndex > endIndex) {
+            throw std::out_of_range("Invalid range");
+        }
+        Queue<T> subQueue;
+        std::queue<T> temp = elements;
+        for (int i = 0; i <= endIndex; ++i) {
+            if (i >= startIndex) {
+                subQueue.enqueue(temp.front());
+            }
+            temp.pop();
+        }
+        return subQueue;
+    }
+
+
+**** TAGS ****
+
+getsubqueue function of queue
+**** SNIPPET ****
+queuereversefirstk
+void reverseK(int k) {
+        if (k < 0 || k > size()) {
+            throw std::out_of_range("Invalid value of K");
+        }
+        std::stack<T> stack;
+        for (int i = 0; i < k; ++i) {
+            stack.push(front());
+            dequeue();
+        }
+        while (!stack.empty()) {
+            enqueue(stack.top());
+            stack.pop();
+        }
+    }
+
+
+**** TAGS ****
+
+reversefirstk function of queue
+**** SNIPPET ****
+queuereplace
+void replace(const T& oldElement, const T& newElement) {
+        std::queue<T> temp;
+        while (!isEmpty()) {
+            if (front() == oldElement) {
+                temp.push(newElement);
+            } else {
+                temp.push(front());
+            }
+            dequeue();
+        }
+        elements = temp;
+    }
+
+
+**** TAGS ****
+
+queuereplace function of queue
+**** SNIPPET ****
+queuedistinctelements
+Queue<T> getDistinctElements() const {
+        std::unordered_set<T> seen;
+        Queue<T> distinctQueue;
+        std::queue<T> temp = elements;
+        while (!temp.empty()) {
+            if (seen.insert(temp.front()).second) {
+                distinctQueue.enqueue(temp.front());
+            }
+            temp.pop();
+        }
+        return distinctQueue;
+    }
+
+
+**** TAGS ****
+
+queuedistinctelements function of queue
+**** SNIPPET ****
+queuepopuntil
+void popUntil(std::function<bool(const T&)> predicate) {
+        while (!isEmpty() && !predicate(front())) {
+            dequeue();
+        }
+    }
+
+
+**** TAGS ****
+
+popuntil function of queue
+**** SNIPPET ****
+queuepush
+void push(const T& item, std::function<bool(const T&)> condition) {
+        while (condition(item)) {
+            enqueue(item);
+        }
+    }
+
+
+**** TAGS ****
+
+queuepush function of queue
+**** SNIPPET ****
+queueinsertsorted
+void insertSorted(const T& item) {
+        std::queue<T> temp;
+        while (!isEmpty() && front() < item) {
+            temp.push(front());
+            dequeue();
+        }
+        temp.push(item);
+        while (!isEmpty()) {
+            temp.push(front());
+            dequeue();
+        }
+        elements = temp;
+    }
+
+
+**** TAGS ****
+
+insertsorted function of queue    
+
 
