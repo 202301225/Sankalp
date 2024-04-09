@@ -1,32 +1,16 @@
-
-
 #include <bits/stdc++.h>
-#include "Class_snippet_Manager.cpp"
-#define RESET "\033[0m"
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN "\033[36m"
-#define WHITE "\033[37m"
-#define BOLD_RED "\033[1m\033[31m"
-#define BOLD_GREEN "\033[1m\033[32m"
-#define BOLD_YELLOW "\033[1m\033[33m"
-#define BOLD_BLUE "\033[1m\033[34m"
-#define BOLD_CYAN "\033[1m\033[36m"
-#define BOLD_WHITE "\033[1m\033[37m"
-#define UNDERLINE_RED "\033[4m\033[31m"
-#define UNDERLINE_GREEN "\033[4m\033[32m"
-
+#include "CodeSnippetManager.h"
+#include "ColorList.h"
 using namespace std;
+
 int main()
 
 {
 
     CodeSnippetManager snippetManager;
 
-    cout << endl<< MAGENTA << "Well-come to code snippet manager of SANKALP Group" << RESET << endl;
+    cout << endl
+         << MAGENTA << "Well-come to code snippet manager of SANKALP Group" << RESET << endl;
 
     while (true)
 
@@ -45,7 +29,8 @@ int main()
         cout << YELLOW << "Enter 8 for Exit" << RESET << endl;
 
         int choice;
-        cout << "\n" << BOLD_RED << "Enter your choice (1-8): " << RESET;
+        cout << "\n"
+             << BOLD_RED << "Enter your choice (1-8): " << RESET;
 
         cin >> choice;
 
@@ -113,12 +98,13 @@ int main()
         case 5:
         {
             string tag;
-            cout << endl<< "Enter tag that you search: ";
+            cout << endl
+                 << "Enter tag that you search: ";
             cin >> tag;
             snippetManager.searchByTag(tag);
             cout << "------------------------------------------------------------" << endl;
             break;
-        }  
+        }
         case 6:
         {
 
@@ -158,8 +144,8 @@ int main()
                 getline(cin, tagInput);
                 snippetManager.editSnippet(name, newCode, tagInput);
             }
-            cout << "------------------------------------------------------------" ;
-            cout<< endl;
+            cout << "------------------------------------------------------------";
+            cout << endl;
             break;
         }
         case 7:
@@ -173,26 +159,25 @@ int main()
 
             snippetManager.removeSnippet(name);
 
-            cout << "------------------------------------------------------------" ;
-            cout<< endl;
+            cout << "------------------------------------------------------------";
+            cout << endl;
 
             break;
         }
         case 8:
         {
-            cout << endl << BOLD_GREEN << "Exit From Snippet Manager! Goodbye!" << RESET << endl;
-              cout<< endl;
-            
+            cout << endl
+                 << BOLD_GREEN << "Exit From Snippet Manager! Goodbye!" << RESET << endl;
+            cout << endl;
+
             return 0;
         }
 
         default:
 
             cout << "Invalid choice. Please enter a number between 1 and 8" << endl;
-
         }
-        
-        }
+    }
 
     return 0;
 }
