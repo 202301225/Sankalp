@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "op",
+                "main.cpp",
+                "searchByTag.cpp",
+                "saveSnippets.cpp",
+                "removeSnippet.cpp",
+                "closestSnippet.cpp",
+                "loadSnippets.cpp",
+                "listTags.cpp",
+                "listSnippets.cpp",
+                "getSnippet.cpp",
+                "findclosestSnippet.cpp",
+                "editSnippet.cpp",
+                "addSnippet.cpp",
+                "constructor.cpp",
+                "check_if_available.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
