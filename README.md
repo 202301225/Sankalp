@@ -16,4 +16,4 @@ Stackoverflow
 
 
 execute Our Code Step:-
-first open jscon file then do ctrl + shift + B. then by default our execute file name is op. go to the terminal and write ./op
+first open json file then do ctrl + shift + B. then by default our execute file name is op. go to the terminal and write ./op
