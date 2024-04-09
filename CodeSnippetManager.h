@@ -11,7 +11,7 @@ private:
     string store_File;
 
 public:
-    CodeSnippetManager(string file = "xyz.txt");
+    CodeSnippetManager(string file = "snippets.txt");
     int closestSnippet( string s1,string s2);
     string findclosestSnippet( string input);
     void saveSnippets();
