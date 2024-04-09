@@ -10,10 +10,10 @@ Description :- A Code Snippet Manager is a tool designed to organize , store and
 
 Refrencess:-
 Geeksforgeeks , 
-Codewithharry(youtube channle) , 
+Codewithharry(youtube channel) , 
 Programizz , 
 Stackoverflow
 
 
 execute Our Code Step:-
-first open jscon file then ctrl + shift+B. then by default our execute file name is op. go to the terminal and write ./op
+first open jscon file then do ctrl + shift + B. then by default our execute file name is op. go to the terminal and write ./op
